@@ -28,7 +28,7 @@ export interface FilterOptions {
 export class HomeLayoutComponent implements OnInit {
   @ViewChild(HeaderBarLayoutComponent) headerBarComponent!: HeaderBarLayoutComponent;
 
-  currentId = 'home'; // This will always stay 'home' now
+  currentId = 'home'; // This will always stay 'homeland' now
   currentPageTitle = '';
   mainPages: PageLink[] = [];
   morePages: PageLink[] = [];
