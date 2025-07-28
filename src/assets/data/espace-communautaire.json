@@ -1,0 +1,76 @@
+{
+  "menuOrder": ["Forums de Discussions", "Blogs de Notre Communauté", "Sondages et Enquêtes", "Témoignages", "Annonces Communautaires", "Entraides", "Nos Cloîtres", "Annuaire des Membres"],
+  "menuIcons": {
+    "Forums de Discussions": "pi pi-comments",
+    "Blogs de Notre Communauté": "pi pi-pencil",
+    "Sondages et Enquêtes": "pi pi-chart-bar",
+    "Témoignages": "pi pi-quote-left",
+    "Annonces Communautaires": "pi pi-bell",
+    "Entraides": "pi pi-heart",
+    "Nos Cloîtres": "pi pi-home",
+    "Annuaire des Membres": "pi pi-users"
+  },
+  "menus": {
+    "Forums de Discussions": [
+      {
+        "id": 1,
+        "main_category": "Thèmes de Discussion",
+        "sub_categories": [
+          "Santé et Bien-être",
+          "Loisirs et Passions",
+          "Conseils pratiques",
+          "Voyages",
+          "Actualités"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/forum1.jpg",
+            "theme": "Thèmes de Discussion",
+            "name": "Forum Santé Senior",
+            "telephone": "",
+            "email": "",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Témoignages": [
+      {
+        "id": 1,
+        "main_category": "Expériences de Vie",
+        "sub_categories": [
+          "Transmission",
+          "Défis relevés",
+          "Conseils aux plus jeunes",
+          "Histoires inspirantes"
+        ],
+        "cards": [
+          {
+            "id": 2,
+            "picture": "assets/cards/temoignage1.jpg",
+            "theme": "Expériences de Vie",
+            "name": "Jean, 78 ans: Mon voyage en Asie",
+            "telephone": "",
+            "email": "",
+            "rating": 5,
+            "isFavorite": true
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/communaute1.jpg",
+      "theme": "Espace Communautaire",
+      "name": "Bienvenue sur WIZERS!",
+      "telephone": "",
+      "email": "",
+      "rating": 5,
+      "isFavorite": true
+    }
+  ]
+}

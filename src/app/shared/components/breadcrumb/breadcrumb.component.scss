@@ -1,0 +1,111 @@
+.breadcrumb-container {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(70, 130, 180, 0.2);
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8rem;
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #666;
+
+      .breadcrumb-link {
+        color: #4682B4;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 500;
+
+        &:hover {
+          //background-color: rgba(95, 133, 117, 0.1);
+          color: #89CFF0;
+          //text-decoration: underline;
+        }
+
+        &:focus {
+          outline: 2px solid #4682B4;
+          outline-offset: 2px;
+        }
+      }
+
+      .breadcrumb-current {
+        color: #4682B4;
+        font-weight: 600;
+        padding: 0.2rem 0.4rem;
+        background-color: rgba(64, 109, 130, 0.1); ///////
+        border-radius: 4px;
+      }
+
+      .breadcrumb-separator {
+        color: #999;
+        font-size: 0.7rem;
+        margin: 0 0.2rem;
+      }
+
+      &.active {
+        color: #89CFF0;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Mobile responsive styles
+@media (max-width: 768px) {
+  .breadcrumb-container {
+    margin-bottom: 0.8rem;
+    padding: 0.4rem 0;
+
+    .breadcrumb {
+      font-size: 0.7rem;
+      gap: 0.3rem;
+
+      .breadcrumb-item {
+        gap: 0.3rem;
+
+        .breadcrumb-link,
+        .breadcrumb-current {
+          padding: 0.1rem 0.3rem;
+          font-size: 0.7rem;
+        }
+
+        .breadcrumb-separator {
+          font-size: 0.6rem;
+          margin: 0 0.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb-container {
+    .breadcrumb {
+      font-size: 0.6rem;
+
+      .breadcrumb-item {
+        .breadcrumb-link,
+        .breadcrumb-current {
+          padding: 0.1rem 0.2rem;
+          font-size: 0.6rem;
+        }
+
+        .breadcrumb-separator {
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+}

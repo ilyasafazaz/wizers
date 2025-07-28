@@ -1,0 +1,22 @@
+<div class="detail-container">
+  <!-- Header with same styling as content-layout -->
+  <header class="header-container">
+    <app-header-bar-layout
+      [mainPages]="mainPages"
+      [morePages]="morePages"
+      [currentId]="currentId"
+      [showDropdown]="showDropdown"
+      [showMore]="showMore"
+      (navClick)="handleNavClick($event)"
+      (toggleMore)="toggleMore($event)"
+    ></app-header-bar-layout>
+  </header>
+
+  <!-- Detail content -->
+  <main class="main-content">
+    <div class="detail-content">
+      <h2>Détail Annuaire Professionnel</h2>
+      <p>detail-annauaire-pro works!</p>
+    </div>
+  </main>
+</div>

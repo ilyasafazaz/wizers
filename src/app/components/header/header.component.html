@@ -1,0 +1,54 @@
+<div class="header-container">
+  <div class="left-section">
+    <!-- Custom Language Dropdown -->
+    <div class="custom-dropdown" (click)="toggleLangDropdown()">
+      <img
+        [src]="getFlag(selectedLanguage)"
+        class="flag-icon"
+        alt="flag"
+      />
+      <span class="lang-label">{{ getLabel(selectedLanguage) }}</span>
+      <ul class="dropdown-list" *ngIf="showLangDropdown">
+        <li
+          *ngFor="let lang of languages"
+          (click)="selectLanguage(lang.code)"
+          [class.selected]="lang.code === selectedLanguage"
+        >
+          <img [src]="lang.flag" class="flag-icon" alt="flag" />
+          <span>{{ lang.label }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Currency Selector with PrimeNG icon -->
+    <div class="currency-select-wrapper">
+      <i class="pi pi-money-bill"></i>
+      <select [(ngModel)]="selectedCurrency" class="custom-select">
+        <option *ngFor="let currency of currencies" [value]="currency">
+          {{ currency }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <button class="action-button">
+      <i class="pi pi-share-alt" title="Partager"></i>
+    </button>
+    <button class="action-button">
+      <i class="pi pi-exclamation-circle" title="Aide"></i>
+    </button>
+
+    <button class="action-button">
+      <i class="pi pi-user" title="Compte"></i>
+      <span>Se Connecter</span>
+    </button>
+    <button class="action-button">
+      <i class="pi pi-heart" title="Favoris"></i>
+    </button>
+    <button class="action-button">
+      <i class="pi pi-shopping-cart" title="Panier"></i>
+      <span>Panier</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="search-bar">
+  <!-- Search input with icon -->
+  <div class="input-icon-group">
+    <span class="icon-left">
+      <i class="pi pi-search"></i>
+    </span>
+    <input type="text" placeholder="Que cherchez-vous ?" />
+  </div>
+
+  <!-- Location input with icon -->
+  <div class="input-icon-group">
+    <span class="icon-left">
+      <i class="pi pi-globe"></i>
+    </span>
+    <input type="text" placeholder="Dans quel endroit ?" />
+  </div>
+
+  <!-- Select with icon -->
+  <div class="input-icon-group">
+    <span class="icon-left">
+      <i class="pi pi-tag"></i>
+    </span>
+    <select [(ngModel)]="selectedCategory">
+      <option value="" disabled>Quelle catégorie</option>
+      <option *ngFor="let cat of categories" [value]="cat">
+        {{ cat }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Rechercher button -->
+  <button pButton type="button" label="Rechercher" class="search-btn"></button>
+</div>

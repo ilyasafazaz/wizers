@@ -1,0 +1,217 @@
+<div class="detail-container">
+  <!-- Header with same styling as content-layout -->
+  <header class="header-container">
+    <app-header-bar-layout
+      [mainPages]="mainPages"
+      [morePages]="morePages"
+      [currentId]="currentId"
+      [showDropdown]="showDropdown"
+      [showMore]="showMore"
+      (navClick)="handleNavClick($event)"
+      (toggleMore)="toggleMore($event)"
+    ></app-header-bar-layout>
+    <app-dropdown-layout
+      [showDropdown]="showDropdown"
+      [espaceData]="espaceData"
+      [selectedMenuKey]="selectedMenuKey"
+      [selectedMainCategoryId]="selectedMainCategoryId"
+      [selectedSubCategory]="selectedSubCategory"
+      [currentEspaceId]="currentId"
+      (menuSelected)="onMenuSelected($event)"
+      (mainCategorySelected)="onMainCategorySelected($event)"
+      (subCategorySelected)="onSubCategorySelected($event)"
+      (closeSubDropdown)="closeDropdown()"
+    ></app-dropdown-layout>
+  </header>
+
+  <!-- Detail content -->
+  <main class="main-content">
+    <div class="detail-content">
+      <app-detail-header-annauaire-pro [currentCard]="currentCard"></app-detail-header-annauaire-pro>
+
+      <div class="content" *ngIf="currentCard">
+        <div class="content-wrapper">
+          <div class="main-content-area">
+            <app-detail-menu-annauaire-pro
+              (menuChange)="setActiveMenu($event)">
+            </app-detail-menu-annauaire-pro>
+
+            <!-- Extend/Collapse Sidebar Button -->
+            <div class="sidebar-toggle">
+              <button
+                class="toggle-btn"
+                (click)="toggleSidebar()"
+                [title]="isSidebarExpanded ? 'Réduire la barre latérale' : 'Étendre la barre latérale'">
+                <i class="pi" [class.pi-angle-left]="isSidebarExpanded" [class.pi-angle-right]="!isSidebarExpanded"></i>
+              </button>
+            </div>
+
+            <!-- Pass currentCard to breadcrumb component -->
+            <app-breadcrumb
+              [currentCard]="currentCard"
+              [selectedMenuItem]="selectedMenuItem"
+              [selectedSidebarItem]="selectedSidebarItem">
+            </app-breadcrumb>
+
+            <!-- Dynamic content based on active menu (only show if no sidebar item is active) -->
+            <div class="content-section" *ngIf="activeMenu === 'about' && !activeSidebarItem">
+              <h3>À propos de {{ currentCard.name }}</h3>
+              <div class="description">
+                <p>{{ currentCard.description || getDefaultDescription() }}</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="activeMenu === 'contact' && !activeSidebarItem">
+              <h3>Informations de contact</h3>
+              <div class="contact-details">
+                <div class="contact-card">
+                  <i class="pi pi-phone"></i>
+                  <div>
+                    <h4>Téléphone</h4>
+                    <p>{{ currentCard.telephone }}</p>
+                  </div>
+                </div>
+
+                <div class="contact-card">
+                  <i class="pi pi-envelope"></i>
+                  <div>
+                    <h4>Email</h4>
+                    <p>{{ currentCard.email }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="activeMenu === 'faq' && !activeSidebarItem">
+              <h3>Questions fréquentes</h3>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <h4>Comment contacter {{ currentCard.name }} ?</h4>
+                  <p>Vous pouvez nous contacter par téléphone au {{ currentCard.telephone }} ou par email à {{ currentCard.email }}.</p>
+                </div>
+
+                <div class="faq-item">
+                  <h4>Quels sont les horaires d'ouverture ?</h4>
+                  <p>Nos horaires d'ouverture sont du lundi au vendredi de 9h à 18h. Pour plus d'informations, n'hésitez pas à nous contacter.</p>
+                </div>
+
+                <div class="faq-item">
+                  <h4>Dans quelle zone géographique intervenez-vous ?</h4>
+                  <p>Nous intervenons principalement dans la région et pouvons étudier les demandes pour des zones plus étendues selon les besoins.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="activeMenu === 'forum' && !activeSidebarItem">
+              <h3>Forum de discussion</h3>
+              <div class="forum-placeholder">
+                <div class="forum-message">
+                  <i class="pi pi-comments"></i>
+                  <p>Le forum de discussion sera bientôt disponible. Vous pourrez échanger avec d'autres utilisateurs et poser vos questions.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="activeMenu === 'reviews' && !activeSidebarItem">
+              <h3>Avis clients</h3>
+              <div class="reviews-placeholder">
+                <div class="review-summary">
+                  <div class="average-rating">
+                    <span class="rating-number">{{ currentCard.rating }}</span>
+                    <div class="stars">
+                      <i
+                        *ngFor="let star of getStarArray(currentCard.rating)"
+                        class="pi pi-star"
+                        [class.filled]="isStarFilled(star, currentCard.rating)"
+                      ></i>
+                    </div>
+                    <span>sur 5</span>
+                  </div>
+                </div>
+
+                <div class="reviews-message">
+                  <i class="pi pi-star"></i>
+                  <p>Les avis clients seront bientôt disponibles. Vous pourrez consulter et laisser des avis sur nos services.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic content based on active sidebar item (only show if sidebar item is active) -->
+            <div class="content-section" *ngIf="activeSidebarItem === 'map'">
+              <h3>Localisation de {{ currentCard.name }}</h3>
+              <div class="map-container">
+                <div class="map-placeholder">
+                  <i class="pi pi-map-marker"></i>
+                  <h4>Carte interactive</h4>
+                  <p>La carte interactive sera bientôt disponible pour localiser {{ currentCard.name }}.</p>
+                  <div class="location-info">
+                    <p><strong>Téléphone:</strong> {{ currentCard.telephone }}</p>
+                    <p><strong>Email:</strong> {{ currentCard.email }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="activeSidebarItem === 'share'">
+              <h3>Partager {{ currentCard.name }}</h3>
+              <div class="share-container">
+                <div class="share-options">
+                  <h4>Partager sur les réseaux sociaux</h4>
+                  <div class="social-buttons">
+                    <button class="social-btn facebook" (click)="shareOnSocial('facebook')">
+                      <i class="pi pi-facebook"></i>
+                      <span>Facebook</span>
+                    </button>
+                    <button class="social-btn twitter" (click)="shareOnSocial('twitter')">
+                      <i class="pi pi-twitter"></i>
+                      <span>Twitter</span>
+                    </button>
+                    <button class="social-btn linkedin" (click)="shareOnSocial('linkedin')">
+                      <i class="pi pi-linkedin"></i>
+                      <span>LinkedIn</span>
+                    </button>
+                    <button class="social-btn whatsapp" (click)="shareOnSocial('whatsapp')">
+                      <i class="pi pi-whatsapp"></i>
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
+
+                  <div class="share-link">
+                    <h4>Partager le lien</h4>
+                    <div class="link-container">
+                      <input
+                        type="text"
+                        [value]="getShareUrl()"
+                        readonly
+                        #shareInput
+                        class="share-input">
+                      <button class="copy-btn" (click)="copyToClipboard(shareInput)">
+                        <i class="pi pi-copy"></i>
+                        <span>Copier</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <app-detail-sidebar-annauaire-pro
+            [isExpanded]="isSidebarExpanded"
+            [activeSidebarItem]="activeSidebarItem"
+            (sidebarItemChange)="onSidebarItemChange($event)">
+          </app-detail-sidebar-annauaire-pro>
+        </div>
+      </div>
+
+      <!-- Placeholder when no card is selected -->
+      <div class="no-card-selected" *ngIf="!currentCard">
+        <div class="placeholder-content">
+          <i class="pi pi-info-circle"></i>
+          <h3>Aucune carte sélectionnée</h3>
+          <p>Veuillez sélectionner une carte pour voir les détails.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

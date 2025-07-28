@@ -1,0 +1,87 @@
+{
+  "menuOrder": ["E-boutique Partenaire", "Catalogues des Produits", "Catalogues des Services", "Catalogues des E-services", "Opportunités"],
+  "menuIcons": {
+    "E-boutique Partenaire": "pi pi-shopping-cart",
+    "Catalogues des Produits": "pi pi-book",
+    "Catalogues des Services": "pi pi-wrench",
+    "Catalogues des E-services": "pi pi-globe",
+    "Opportunités": "pi pi-star"
+  },
+  "menus": {
+    "E-boutique Partenaire": [
+      {
+        "id": 1,
+        "main_category": "Produits pour Seniors",
+        "sub_categories": [
+          "Aides techniques",
+          "Mobilité",
+          "Confort domestique",
+          "Santé et bien-être",
+          "Loisirs adaptés"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/shop1.jpg",
+            "theme": "Produits pour Seniors",
+            "name": "SilverShop Online",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "contact@silvershop.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ],
+        "subCategoryCards": {
+          "Aides techniques": [
+            {
+              "id": 101,
+              "picture": "assets/cards/aides1.jpg",
+              "theme": "Aides techniques",
+              "name": "Aides Techniques Pro",
+              "telephone": "+33 6 11 22 33 44",
+              "email": "contact@aidestechniques.fr",
+              "rating": 5,
+              "isFavorite": true
+            }
+          ]
+        }
+      }
+    ],
+    "Catalogues des Produits": [
+      {
+        "id": 1,
+        "main_category": "Produits Adaptés",
+        "sub_categories": [
+          "Mobilier ergonomique",
+          "Cuisine adaptée",
+          "Sécurité domestique",
+          "Technologies d'assistance"
+        ],
+        "cards": [
+          {
+            "id": 2,
+            "picture": "assets/cards/produits1.jpg",
+            "theme": "Produits Adaptés",
+            "name": "Catalogue Adapt Senior",
+            "telephone": "+33 6 22 33 44 55",
+            "email": "info@adaptsenior.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/opportunite1.jpg",
+      "theme": "Offres & Opportunités",
+      "name": "Spécial Retraite Active",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@retraite-active.fr",
+      "rating": 4,
+      "isFavorite": true
+    }
+  ]
+}

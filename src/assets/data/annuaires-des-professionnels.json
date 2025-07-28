@@ -1,0 +1,763 @@
+{
+  "menuOrder": ["Coopératives", "Entreprises", "Associations", "Établissements Étatiques"],
+  "menuIcons": {
+    "Coopératives": "pi pi-users",
+    "Entreprises": "pi pi-building",
+    "Associations": "pi pi-heart",
+    "Établissements Étatiques": "pi pi-flag"
+  },
+  "menus": {
+    "Coopératives": [
+      {
+        "id": 1,
+        "main_category": "Santé & Bien-Être",
+        "sub_categories": [
+          "Mutuelles solidaires",
+          "Achat groupé de médicaments",
+          "Coopératives de soins à domicile",
+          "Résidences médicalisées collaboratives",
+          "Groupes de prévention santé",
+          "Ateliers bien-être (yoga, méditation)",
+          "Réseaux de garde-malade bénévoles",
+          "Coopératives d'optique et audioprothèse",
+          "Livraison de repas santé partagée",
+          "Télémedecine mutualisée",
+          "test",
+          "test",
+          "test",
+          "test",
+          "test",
+          "test"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Bien-Être",
+            "name": "Mutuelle Solidaire du Nord",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "contact@mutuelle-nord.fr",
+            "rating": 4,
+            "isFavorite": false,
+            "slides": ["assets/cards/general1.jpg","assets/cards/general2.jpg","assets/cards/general3.jpg"]
+          },
+          {
+            "id": 2,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Bien-Être",
+            "name": "Coopérative Médicaments Ensemble",
+            "telephone": "+33 6 23 45 67 89",
+            "email": "info@medicaments-ensemble.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 3,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Bien-Être",
+            "name": "Réseau Soins Partagés",
+            "telephone": "+33 6 34 56 78 90",
+            "email": "contact@soins-partages.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ],
+        "subCategoryCards": {
+          "Mutuelles solidaires": [
+            {
+              "id": 101,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Mutuelles solidaires",
+              "name": "Mutuelle Entraide 60+",
+              "telephone": "+33 6 11 22 33 44",
+              "email": "contact@entraide60.fr",
+              "rating": 4,
+              "isFavorite": false
+            },
+            {
+              "id": 102,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Mutuelles solidaires",
+              "name": "Solidarité Santé Coop",
+              "telephone": "+33 6 55 66 77 88",
+              "email": "info@solidaritesante.fr",
+              "rating": 5,
+              "isFavorite": true
+            },
+            {
+              "id": 103,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Mutuelles solidaires",
+              "name": "Mutuelle Bien Vieillir",
+              "telephone": "+33 6 77 88 99 11",
+              "email": "contact@bienvieillir.fr",
+              "rating": 4,
+              "isFavorite": false
+            }
+          ],
+          "Achat groupé de médicaments": [
+            {
+              "id": 201,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Achat groupé de médicaments",
+              "name": "PharmaGroup Coop",
+              "telephone": "+33 6 44 55 66 77",
+              "email": "contact@pharmagroup.fr",
+              "rating": 3,
+              "isFavorite": false
+            },
+            {
+              "id": 202,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Achat groupé de médicaments",
+              "name": "Médicaments Solidaires",
+              "telephone": "+33 6 33 44 55 66",
+              "email": "info@medic-solidaires.fr",
+              "rating": 4,
+              "isFavorite": true
+            },
+            {
+              "id": 203,
+              "picture": "assets/cards/general1.jpg",
+              "theme": "Achat groupé de médicaments",
+              "name": "Pharmacie Coopérative",
+              "telephone": "+33 6 22 33 44 55",
+              "email": "contact@pharma-coop.fr",
+              "rating": 5,
+              "isFavorite": false
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "main_category": "Logement & Vie Communautaire",
+        "sub_categories": [
+          "Habitats intergénérationnels",
+          "Colocations seniors solidaires",
+          "Coopératives immobilières retraite",
+          "Résidences services collaboratives",
+          "Écovillages pour seniors",
+          "Bricolage et entretien solidaire",
+          "Échange de logis temporaires",
+          "Groupes de sécurisation domicile",
+          "Partages de jardins communautaires",
+          "Services de ménage mutualisés"
+        ],
+        "cards": [
+          {
+            "id": 4,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Logement & Vie Communautaire",
+            "name": "Habitat Solidaire 60+",
+            "telephone": "+33 6 77 88 99 00",
+            "email": "contact@habitatsolidaire.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 5,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Logement & Vie Communautaire",
+            "name": "Colocation Senior Plus",
+            "telephone": "+33 6 88 99 11 22",
+            "email": "info@colocation-senior.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 6,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Logement & Vie Communautaire",
+            "name": "Village Partagé",
+            "telephone": "+33 6 99 11 22 33",
+            "email": "contact@village-partage.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "main_category": "Agriculture & Alimentation",
+        "sub_categories": [
+          "Coopératives agricoles locales",
+          "AMAP (Association pour le Maintien d'une Agriculture Paysanne)",
+          "Jardins partagés communautaires",
+          "Circuits courts alimentaires",
+          "Transformation artisanale collective",
+          "Conserveries coopératives",
+          "Magasins de producteurs",
+          "Épiceries solidaires",
+          "Cantines participatives",
+          "Ateliers cuisine collective"
+        ],
+        "cards": [
+          {
+            "id": 7,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Agriculture & Alimentation",
+            "name": "Terre & Partage Coop",
+            "telephone": "+33 6 11 33 55 77",
+            "email": "contact@terre-partage.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 8,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Agriculture & Alimentation",
+            "name": "AMAP des Seniors",
+            "telephone": "+33 6 22 44 66 88",
+            "email": "info@amap-seniors.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 9,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Agriculture & Alimentation",
+            "name": "Jardin Solidaire Local",
+            "telephone": "+33 6 33 55 77 99",
+            "email": "contact@jardin-solidaire.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Entreprises": [
+      {
+        "id": 1,
+        "main_category": "Services à la Personne",
+        "sub_categories": [
+          "Aide à domicile",
+          "Services de ménage",
+          "Livraison de repas",
+          "Transport accompagné",
+          "Soins esthétiques à domicile",
+          "Jardinage et bricolage",
+          "Garde d'animaux",
+          "Accompagnement administratif"
+        ],
+        "cards": [
+          {
+            "id": 10,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services à la Personne",
+            "name": "Aide & Confort",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "contact@aide-confort.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 11,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services à la Personne",
+            "name": "Seniors Services Plus",
+            "telephone": "+33 6 23 45 67 89",
+            "email": "info@seniors-services.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 12,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services à la Personne",
+            "name": "Domicile Assistance",
+            "telephone": "+33 6 34 56 78 90",
+            "email": "contact@domicile-assistance.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "main_category": "Santé & Médical",
+        "sub_categories": [
+          "Cabinets médicaux",
+          "Pharmacies",
+          "Laboratoires d'analyses",
+          "Centres de radiologie",
+          "Kinésithérapeutes",
+          "Podologues",
+          "Opticiens",
+          "Audioprothésistes"
+        ],
+        "cards": [
+          {
+            "id": 13,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Médical",
+            "name": "Cabinet Médical Central",
+            "telephone": "+33 6 45 67 89 01",
+            "email": "contact@cabinet-central.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 14,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Médical",
+            "name": "Pharmacie du Bien-Être",
+            "telephone": "+33 6 56 78 90 12",
+            "email": "info@pharmacie-bien-etre.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 15,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé & Médical",
+            "name": "Centre Kiné Santé",
+            "telephone": "+33 6 67 89 01 23",
+            "email": "contact@kine-sante.fr",
+            "rating": 5,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "main_category": "Commerce & Artisanat",
+        "sub_categories": [
+          "Boulangeries artisanales",
+          "Boucheries traditionnelles",
+          "Marchés locaux",
+          "Artisans du bâtiment",
+          "Électriciens",
+          "Plombiers",
+          "Menuisiers",
+          "Couturières et retoucheurs"
+        ],
+        "cards": [
+          {
+            "id": 16,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Commerce & Artisanat",
+            "name": "Boulangerie du Village",
+            "telephone": "+33 6 78 90 12 34",
+            "email": "contact@boulangerie-village.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 17,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Commerce & Artisanat",
+            "name": "Artisans Réunis",
+            "telephone": "+33 6 89 01 23 45",
+            "email": "info@artisans-reunis.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 18,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Commerce & Artisanat",
+            "name": "Marché des Producteurs",
+            "telephone": "+33 6 90 12 34 56",
+            "email": "contact@marche-producteurs.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Associations": [
+      {
+        "id": 1,
+        "main_category": "Loisirs & Culture",
+        "sub_categories": [
+          "Clubs de lecture",
+          "Ateliers créatifs",
+          "Chorales seniors",
+          "Clubs de marche",
+          "Associations photographiques",
+          "Théâtre amateur",
+          "Clubs de jeux",
+          "Voyages organisés"
+        ],
+        "cards": [
+          {
+            "id": 19,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Loisirs & Culture",
+            "name": "Club Lecture & Partage",
+            "telephone": "+33 6 01 23 45 67",
+            "email": "contact@lecture-partage.org",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 20,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Loisirs & Culture",
+            "name": "Atelier Créatif Senior",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "info@atelier-creatif.org",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 21,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Loisirs & Culture",
+            "name": "Chorale des Amis",
+            "telephone": "+33 6 23 45 67 89",
+            "email": "contact@chorale-amis.org",
+            "rating": 5,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "main_category": "Sport & Bien-Être",
+        "sub_categories": [
+          "Gymnastique douce",
+          "Aqua-gym",
+          "Tai-chi",
+          "Marche nordique",
+          "Yoga senior",
+          "Pétanque",
+          "Tennis de table",
+          "Danse de salon"
+        ],
+        "cards": [
+          {
+            "id": 22,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Sport & Bien-Être",
+            "name": "Gym Douce Ensemble",
+            "telephone": "+33 6 34 56 78 90",
+            "email": "contact@gym-douce.org",
+            "rating": 4,
+            "isFavorite": true
+          },
+          {
+            "id": 23,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Sport & Bien-Être",
+            "name": "Aqua-Forme Senior",
+            "telephone": "+33 6 45 67 89 01",
+            "email": "info@aqua-forme.org",
+            "rating": 5,
+            "isFavorite": false
+          },
+          {
+            "id": 24,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Sport & Bien-Être",
+            "name": "Club Tai-Chi Harmonie",
+            "telephone": "+33 6 56 78 90 12",
+            "email": "contact@taichi-harmonie.org",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "main_category": "Solidarité & Entraide",
+        "sub_categories": [
+          "Banques alimentaires",
+          "Vestiaires solidaires",
+          "Accompagnement social",
+          "Aide aux démarches",
+          "Soutien scolaire",
+          "Visites aux malades",
+          "Transport solidaire",
+          "Réparation citoyenne"
+        ],
+        "cards": [
+          {
+            "id": 25,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Solidarité & Entraide",
+            "name": "Entraide Quartier",
+            "telephone": "+33 6 67 89 01 23",
+            "email": "contact@entraide-quartier.org",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 26,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Solidarité & Entraide",
+            "name": "Solidarité Senior",
+            "telephone": "+33 6 78 90 12 34",
+            "email": "info@solidarite-senior.org",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 27,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Solidarité & Entraide",
+            "name": "Accompagnement Plus",
+            "telephone": "+33 6 89 01 23 45",
+            "email": "contact@accompagnement-plus.org",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Établissements Étatiques": [
+      {
+        "id": 1,
+        "main_category": "Services Publics",
+        "sub_categories": [
+          "Mairie et services municipaux",
+          "Centre communal d'action sociale",
+          "Services des impôts",
+          "Préfecture et sous-préfecture",
+          "Services postaux",
+          "Pôle emploi",
+          "CAF (Caisse d'allocations familiales)",
+          "Sécurité sociale"
+        ],
+        "cards": [
+          {
+            "id": 28,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services Publics",
+            "name": "Mairie Centre-Ville",
+            "telephone": "+33 6 90 12 34 56",
+            "email": "contact@mairie-centre.gouv.fr",
+            "rating": 4,
+            "isFavorite": true
+          },
+          {
+            "id": 29,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services Publics",
+            "name": "CCAS Municipal",
+            "telephone": "+33 6 01 23 45 67",
+            "email": "info@ccas-municipal.gouv.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 30,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Services Publics",
+            "name": "Centre des Impôts",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "contact@impots-centre.gouv.fr",
+            "rating": 3,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "main_category": "Santé Publique",
+        "sub_categories": [
+          "Hôpitaux publics",
+          "Centres de santé",
+          "PMI (Protection maternelle et infantile)",
+          "Services de vaccination",
+          "Centres de dépistage",
+          "EHPAD publics",
+          "Services d'aide à domicile publics",
+          "Urgences médicales"
+        ],
+        "cards": [
+          {
+            "id": 31,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé Publique",
+            "name": "Hôpital Public Central",
+            "telephone": "+33 6 23 45 67 89",
+            "email": "contact@hopital-public.gouv.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 32,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé Publique",
+            "name": "Centre de Santé Municipal",
+            "telephone": "+33 6 34 56 78 90",
+            "email": "info@centre-sante.gouv.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 33,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Santé Publique",
+            "name": "EHPAD Les Jardins",
+            "telephone": "+33 6 45 67 89 01",
+            "email": "contact@ehpad-jardins.gouv.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "main_category": "Éducation & Formation",
+        "sub_categories": [
+          "Universités du temps libre",
+          "Centres de formation",
+          "Bibliothèques publiques",
+          "Centres culturels municipaux",
+          "Écoles de musique publiques",
+          "Centres socioculturels",
+          "Maisons de quartier",
+          "Espaces numériques publics"
+        ],
+        "cards": [
+          {
+            "id": 34,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Éducation & Formation",
+            "name": "Université du Temps Libre",
+            "telephone": "+33 6 56 78 90 12",
+            "email": "contact@utl-municipal.gouv.fr",
+            "rating": 5,
+            "isFavorite": true
+          },
+          {
+            "id": 35,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Éducation & Formation",
+            "name": "Bibliothèque Municipale",
+            "telephone": "+33 6 67 89 01 23",
+            "email": "info@bibliotheque.gouv.fr",
+            "rating": 4,
+            "isFavorite": false
+          },
+          {
+            "id": 36,
+            "picture": "assets/cards/general1.jpg",
+            "theme": "Éducation & Formation",
+            "name": "Centre Culturel Municipal",
+            "telephone": "+33 6 78 90 12 34",
+            "email": "contact@centre-culturel.gouv.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/cooperative-agricole.jpg",
+      "theme": "Coopératives",
+      "name": "Coopérative Agricole Régionale",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@coop-agricole.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "La Coopérative Agricole Régionale se dresse comme un phare de l'agriculture durable et de la solidarité communautaire dans la campagne française. Cette coopérative agricole bien établie a gagné sa réputation exceptionnelle grâce à des décennies de service dévoué tant aux agriculteurs locaux qu'à la communauté élargie, avec un focus particulier sur le service aux seniors qui apprécient la qualité, la tradition et les relations personnelles dans leur expérience d'achat quotidienne.",
+      "slides": ["assets/cards/cooperative-agricole.jpg","assets/cards/general1.jpg","assets/cards/hotel-senior.jpg"]
+    },
+    {
+      "id": 1002,
+      "picture": "assets/cards/hotel-senior.jpg",
+      "theme": "Entreprises",
+      "name": "Hôtel Confort Senior",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "contact@hotel-confort.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Établissement hôtelier spécialisé dans l'accueil des personnes âgées avec services adaptés."
+    },
+    {
+      "id": 1003,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Associations",
+      "name": "Association Vivre Ensemble",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "info@vivre-ensemble.org",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Association dédiée au lien social et à l'entraide entre seniors."
+    },
+    {
+      "id": 100111,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Coopératives",
+      "name": "Coopérative Agricole Régionale 121",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@coop-agricole.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "Coopérative agricole proposant des produits locaux et des services de proximité pour les seniors."
+    },
+    {
+      "id": 100222,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Entreprises",
+      "name": "Hôtel Confort Senior 3256",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "contact@hotel-confort.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Établissement hôtelier spécialisé dans l'accueil des personnes âgées avec services adaptés."
+    },
+    {
+      "id": 100333,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Associations",
+      "name": "Association Vivre Ensemble 87",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "info@vivre-ensemble.org",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Association dédiée au lien social et à l'entraide entre seniors."
+    },
+    {
+      "id": 10013211,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Coopératives",
+      "name": "Coopérative Agricole Régionale 9897",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@coop-agricole.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "Coopérative agricole proposant des produits locaux et des services de proximité pour les seniors."
+    },
+    {
+      "id": 10012312,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Entreprises",
+      "name": "Hôtel Confort Senior 457",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "contact@hotel-confort.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Établissement hôtelier spécialisé dans l'accueil des personnes âgées avec services adaptés."
+    },
+    {
+      "id": 1005353,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Associations",
+      "name": "Association Vivre Ensemble 35596",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "info@vivre-ensemble.org",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Association dédiée au lien social et à l'entraide entre seniors."
+    },
+    {
+      "id": 1046503,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Associations",
+      "name": "Association Vivre Ensemble 789815",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "info@vivre-ensemble.org",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Association dédiée au lien social et à l'entraide entre seniors."
+    }
+  ]
+}

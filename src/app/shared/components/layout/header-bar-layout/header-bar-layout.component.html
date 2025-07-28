@@ -1,0 +1,39 @@
+<div class="header-bar">
+  <button class="logo-button" routerLink="/home">
+    <img src="assets/logo.png" alt="WIZERS Logo" class="header-logo">
+  </button>
+
+  <div class="nav-links">
+    <!-- Main navigation links -->
+    <span
+      *ngFor="let page of mainPages"
+      [ngClass]="{ 'nav-link': true, active: page.id === currentId }"
+      (click)="handleNavClick(page.id)"
+    >
+      <i class="pi" [ngClass]="page.icon" style="margin-right: 0.5rem;"></i>
+      {{ page.title }}
+      <i class="pi selected pi-chevron-down ml-1" *ngIf="page.id === currentId && !showDropdown"></i>
+      <i class="pi selected pi-chevron-up ml-1" *ngIf="page.id === currentId && showDropdown"></i>
+    </span>
+
+    <!-- More links  -->
+    <span
+      *ngFor="let page of morePages"
+      [ngClass]="{ 'nav-link': true, 'more-link': true, active: page.id === currentId }"
+      [style.display]="showMore ? 'flex' : 'none'"
+      (click)="handleNavClick(page.id)"
+    >
+      <i class="pi" [ngClass]="page.icon" style="margin-right: 0.5rem;"></i>
+      {{ page.title }}
+      <i class="pi pi-chevron-down ml-1" *ngIf="page.id === currentId && !showDropdown"></i>
+      <i class="pi pi-chevron-up ml-1" *ngIf="page.id === currentId && showDropdown"></i>
+    </span>
+
+    <!-- More toggle button -->
+    <span class="nav-link more-toggle" (click)="showMore = !showMore">
+      <i class="pi pi-ellipsis-h"></i>
+      <i class="pi pi-chevron-down ml-1" *ngIf="!showMore"></i>
+      <i class="pi pi-chevron-up ml-1" *ngIf="showMore"></i>
+    </span>
+  </div>
+</div>

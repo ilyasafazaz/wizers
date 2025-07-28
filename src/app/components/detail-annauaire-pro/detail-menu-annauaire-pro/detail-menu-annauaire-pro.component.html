@@ -1,0 +1,48 @@
+<div class="nav-element">
+  <div class="menu-buttons">
+    <button
+      class="menu-btn"
+      [class.active]="activeMenu === 'about'"
+      (click)="setActiveMenu('about')"
+    >
+      <i class="pi pi-info-circle"></i>
+      <span>À propos</span>
+    </button>
+
+    <button
+      class="menu-btn"
+      [class.active]="activeMenu === 'faq'"
+      (click)="setActiveMenu('faq')"
+    >
+      <i class="pi pi-question-circle"></i>
+      <span>FAQ</span>
+    </button>
+
+    <button
+      class="menu-btn"
+      [class.active]="activeMenu === 'forum'"
+      (click)="setActiveMenu('forum')"
+    >
+      <i class="pi pi-comments"></i>
+      <span>Forum</span>
+    </button>
+
+    <button
+      class="menu-btn"
+      [class.active]="activeMenu === 'reviews'"
+      (click)="setActiveMenu('reviews')"
+    >
+      <i class="pi pi-star"></i>
+      <span>Avis</span>
+    </button>
+
+    <button
+      class="menu-btn"
+      [class.active]="activeMenu === 'contact'"
+      (click)="setActiveMenu('contact')"
+    >
+      <i class="pi pi-phone"></i>
+      <span>Contact</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,385 @@
+.active-dropdown {
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 60vh;
+  font-weight: bold;
+  animation: fadeSlide 0.3s ease-in-out;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+// Global close button
+.global-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: #b30000;
+    color: white;
+    transform: scale(1.1);
+  }
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+// Main container to place espace-menu and sub-dropdown side by side
+.dropdown-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+}
+
+// -------- MENU SECTION --------
+
+.espace-menu {
+  width: 30%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.7rem 1.4rem;
+
+  .menu-items {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    font-weight: bold;
+
+
+    .menu-item {
+
+      cursor: pointer;
+      padding: 0.35rem 0.7rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      font-size: 0.9rem;
+
+      i {
+        margin-right: 0.35rem;
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background-color: darken(#A7C7E7, 10%);
+      }
+
+      &.active {
+        background-color: #4682B4;
+        color: white;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// -------- SUBCATEGORIES + CARDS SECTION --------
+
+.sub-dropdown {
+  width: 100%;
+  background-color: white;
+  height: 60vh;
+  overflow: hidden;
+  padding: 1rem 1.4rem;
+
+  .sub-content {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.4rem;
+    height: 100%;
+
+    .main-categories {
+      width: 30%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+
+      .main-category {
+
+        cursor: pointer;
+        padding: 0.4rem 0.7rem;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.35rem;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        font-weight: normal;
+
+        i {
+          font-size: 0.7rem;
+          transition: transform 0.2s ease;
+        }
+
+        &.active {
+          background-color: #7393B3;
+          font-weight: bold;
+          color: white;
+          transform: scale(1.001);
+
+          i {
+            color: white;
+          }
+        }
+
+        &:hover {
+          background-color: darken(white, 10%);
+        }
+      }
+    }
+
+    .vertical-separator {
+      width: 2px;
+      background: linear-gradient(to bottom,
+        rgba(95, 117, 133, 0.2) 0%,
+        rgba(95, 117, 133, 0.8) 50%,
+        rgba(95, 117, 133, 0.2) 100%);
+      border-radius: 1px;
+      margin: 0.5rem 0;
+    }
+
+    .sub-categories {
+
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 40%;
+      height: 100%;
+
+
+      .sub-categories-container {
+
+        display: flex;
+        gap: 1rem;
+        height: 100%;
+
+        .sub-categories-items {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+
+          .subcategory {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 3px;
+            font-weight: lighter;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            cursor: pointer;
+
+            i {
+              font-size: 0.3rem;
+              color: #7393B3;
+            }
+
+            &:hover {
+              background-color: darken(white, 5%);
+            }
+
+            &.active {
+              background-color: #A7C7E7;
+              color: black;
+              transform: scale(1.001);
+
+              i {
+                color: black;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .promo-cards {
+      width: 25%;
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 0.35rem;
+
+      app-card-layout {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.vertical-separator-test {
+  width: 3px;
+  background: linear-gradient(
+      to bottom,
+      rgba(95, 117, 133, 0.2) 0%,
+      rgba(95, 117, 133, 0.8) 50%,
+      rgba(95, 117, 133, 0.2) 100%
+  );
+  border-radius: 1px;
+  margin: 0.5rem 0;
+}
+// Add this to the end of your dropdown-layout.component.scss file
+
+// Styles to make cards smaller in promo-cards section
+.promo-cards {
+  app-card-layout {
+    ::ng-deep .card {
+      .card-image {
+        height: 100px !important; // Much smaller height
+      }
+
+      .card-content {
+        padding: 0.5rem !important;
+
+        .card-header {
+          margin-bottom: 0.4rem !important;
+
+          .rating {
+            .pi-star {
+              font-size: 0.7rem !important;
+            }
+          }
+        }
+
+        .card-name {
+          font-size: 0.8rem !important;
+          margin-bottom: 0.4rem !important;
+          line-height: 1.2 !important;
+        }
+      }
+    }
+
+    ::ng-deep .cards-container {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+      gap: 0.5rem !important;
+      padding: 0.25rem !important;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .dropdown-container {
+    gap: 0.5rem;
+  }
+
+  .espace-menu {
+    width: 35%;
+  }
+
+  .sub-dropdown {
+    width: 65%;
+  }
+}
+
+@media (max-width: 992px) {
+  .dropdown-container {
+    flex-direction: column;
+    gap: 0;
+    height: auto;
+  }
+
+  .active-dropdown {
+    height: auto;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .espace-menu {
+    width: 100%;
+    height: auto;
+    max-height: 30vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    .menu-items {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .sub-dropdown {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .sub-content {
+    flex-direction: column;
+    height: auto;
+
+    .main-categories,
+    .sub-categories,
+    .promo-cards {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 30vh;
+    }
+
+    .vertical-separator {
+      display: none;
+    }
+
+    .sub-categories-container {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .espace-menu,
+  .sub-dropdown {
+    padding: 0.7rem;
+  }
+
+  .dropdown-container {
+    gap: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .espace-menu {
+    width: 100%;
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

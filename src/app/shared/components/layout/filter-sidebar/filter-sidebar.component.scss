@@ -1,0 +1,270 @@
+.filter-sidebar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+
+  .sidebar-header {
+    background: linear-gradient(135deg, #4682B4, #5a9bd4);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      i {
+        font-size: 1.1rem;
+      }
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.1);
+      }
+
+      i {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .sidebar-content {
+    padding: 1.5rem;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+  }
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+
+  .filter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #4682B4;
+    margin-bottom: 0.7rem;
+    font-size: 0.9rem;
+
+    i {
+      color: #4682B4;
+      font-size: 1rem;
+    }
+  }
+
+  // PrimeNG dropdown styling
+  :host ::ng-deep {
+    .p-dropdown {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+
+      &:not(.p-disabled):hover {
+        border-color: #4682B4;
+      }
+
+      &.p-focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 2px rgba(70, 130, 180, 0.2);
+        border-color: #4682B4;
+      }
+
+      .p-dropdown-label {
+        color: #333;
+        padding: 0.7rem;
+
+        &.p-placeholder {
+          color: #999;
+        }
+      }
+
+      .p-dropdown-trigger {
+        background: transparent;
+        color: #666;
+        width: 2.5rem;
+        border-radius: 0;
+
+        .p-dropdown-trigger-icon {
+          font-size: 0.9rem;
+        }
+      }
+
+      .p-dropdown-clear-icon {
+        color: #666;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .p-dropdown-panel {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+      .p-dropdown-items {
+        padding: 0.25rem 0;
+
+        .p-dropdown-item {
+          padding: 0.7rem 1rem;
+          margin: 0;
+          color: #333;
+          background: transparent;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+
+          &:not(.p-highlight):not(.p-disabled):hover {
+            background: #f8f9fa;
+            color: #4682B4;
+          }
+
+          &.p-highlight {
+            background: #4682B4;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.filter-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+
+  .clear-filters-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #c0392b, #a93226);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4);
+    }
+
+    &:disabled {
+      background: #bdc3c7;
+      color: #7f8c8d;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Mobile responsive design
+@media (max-width: 992px) {
+  .filter-sidebar {
+    .sidebar-header {
+      padding: 1.2rem;
+
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+
+    .sidebar-content {
+      padding: 1.2rem;
+    }
+  }
+
+  .filter-section {
+    margin-bottom: 1.2rem;
+
+    .filter-label {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .filter-sidebar {
+    .sidebar-header {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      .close-btn {
+        width: 2rem;
+        height: 2rem;
+
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .sidebar-content {
+      padding: 1rem;
+    }
+  }
+
+  .filter-section {
+    margin-bottom: 1rem;
+
+    .filter-label {
+      font-size: 0.8rem;
+    }
+  }
+
+  .filter-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+
+    .clear-filters-btn {
+      padding: 0.7rem;
+      font-size: 0.85rem;
+    }
+  }
+}

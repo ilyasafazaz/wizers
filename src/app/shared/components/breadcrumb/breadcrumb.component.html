@@ -1,0 +1,25 @@
+<!-- breadcrumb.component.html -->
+<nav class="breadcrumb-container" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li
+      class="breadcrumb-item"
+      *ngFor="let breadcrumb of breadcrumbs; let last = last"
+      [class.active]="breadcrumb.isActive"
+    >
+      <a
+        *ngIf="!breadcrumb.isActive"
+        (click)="navigateTo(breadcrumb.url)"
+        class="breadcrumb-link"
+        [title]="breadcrumb.label"
+      >
+        <i *ngIf="breadcrumb.icon" [class]="'pi ' + breadcrumb.icon" style="margin-right: 0.3rem;"></i>
+        {{ breadcrumb.label }}
+      </a>
+      <span *ngIf="breadcrumb.isActive" class="breadcrumb-current">
+        <i *ngIf="breadcrumb.icon" [class]="'pi ' + breadcrumb.icon" style="margin-right: 0.3rem;"></i>
+        {{ breadcrumb.label }}
+      </span>
+      <i *ngIf="!last" class="pi pi-chevron-right breadcrumb-separator"></i>
+    </li>
+  </ol>
+</nav>

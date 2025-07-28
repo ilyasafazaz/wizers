@@ -1,0 +1,116 @@
+<div class="home-layout-container">
+  <!-- Top Navigation Header -->
+  <header class="header-container">
+    <!-- Top Navigation bar -->
+    <app-header-bar-layout
+      [mainPages]="mainPages"
+      [morePages]="morePages"
+      [currentId]="selectedHeaderItem"
+      [showDropdown]="showDropdown"
+      [showMore]="showMore"
+      (navClick)="handleNavClick($event)"
+      (toggleMore)="showMore = $event"
+    ></app-header-bar-layout>
+
+    <!-- Dropdown under active link -->
+    <app-dropdown-layout
+      [showDropdown]="showDropdown"
+      [espaceData]="espaceData"
+      [selectedMenuKey]="selectedMenuKey"
+      [selectedMainCategoryId]="selectedMainCategoryId"
+      [selectedSubCategory]="selectedSubCategory"
+      [currentEspaceId]="selectedHeaderItem"
+      (menuSelected)="selectMenu($event)"
+      (mainCategorySelected)="selectMainCategory($event)"
+      (subCategorySelected)="selectSubCategory($event)"
+      (closeSubDropdown)="closeDropdown()"
+    ></app-dropdown-layout>
+  </header>
+
+  <!-- Main Content Container with integrated sidebar -->
+  <div class="home-content-container" [class.with-sidebar]="showFilterSidebar">
+
+    <!-- Filter Sidebar - now inside content container -->
+    <app-filter-sidebar
+      [show]="showFilterSidebar"
+      [allEspaces]="allEspaces"
+      [filters]="filters"
+      (filtersChanged)="onFiltersChanged($event)"
+      (closeSidebar)="closeFilterSidebar()"
+    ></app-filter-sidebar>
+
+    <!-- Main Content Area -->
+    <div class="main-content-area" [class.shifted]="showFilterSidebar">
+      <app-breadcrumb></app-breadcrumb>
+
+      <!-- Filter Button -->
+      <div class="filter-controls" *ngIf="shouldShowFilterButton()">
+        <button class="filter-toggle-btn" (click)="toggleFilterSidebar()">
+          <i class="pi pi-filter"></i>
+          Filtres
+        </button>
+      </div>
+
+      <div *ngIf="isLoading" class="loading-message">Chargement du contenu...</div>
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+
+      <div *ngIf="!isLoading && !error" class="content-wrapper">
+
+        <!-- Show filtered cards when filters are active -->
+        <div *ngIf="hasActiveFilters()" class="filtered-results">
+          <div class="results-header">
+            <h2 class="results-title">{{ currentPageTitle }}</h2>
+            <p class="results-count">{{ getFilteredCards().length }} résultat(s) trouvé(s)</p>
+          </div>
+
+          <div class="filtered-cards">
+            <app-card-layout
+              [cards]="getFilteredCards()"
+              [currentEspaceId]="'filtered'"
+              (cardClick)="onCardClick($event)"
+            ></app-card-layout>
+          </div>
+        </div>
+
+        <!-- Show dropdown selection results when dropdown selections are made -->
+        <div *ngIf="!hasActiveFilters() && hasDropdownSelections()" class="dropdown-results">
+          <h2>{{ currentPageTitle }}</h2>
+          <app-card-layout
+            [cards]="displayedCards"
+            [currentEspaceId]="selectedHeaderItem"
+            (cardClick)="onCardClick($event, selectedHeaderItem)"
+          ></app-card-layout>
+        </div>
+
+        <!-- Show home content when no filters or dropdown selections are active -->
+        <div *ngIf="!hasActiveFilters() && !hasDropdownSelections()" class="home-content">
+          <div class="espaces-grid">
+            <!-- Loop through each espace -->
+            <div *ngFor="let espace of allEspaces" class="espace-section">
+              <div class="espace-header">
+                <h2 class="espace-title">{{ espace.title }}</h2>
+                <button
+                  class="show-more-btn"
+                  (click)="navigateToEspace(espace.id)"
+                >
+                  Voir plus
+                  <i class="pi pi-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Display cards for this espace -->
+              <div class="espace-cards">
+                <app-card-layout
+                  [cards]="getFilteredCardsForEspace(espace.id)"
+                  [currentEspaceId]="espace.id"
+                  (cardClick)="onCardClick($event, espace.id)"
+                ></app-card-layout>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

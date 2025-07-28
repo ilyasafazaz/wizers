@@ -1,0 +1,144 @@
+
+.header-bar {
+  padding: 0.7rem 1.4rem; // reduced from 1rem 2rem
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .logo-button {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 1.4rem;
+    transition: opacity 0.2s;
+    padding: 0; // remove default button padding
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    .header-logo {
+      height: 30px; // adjust as needed
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem; // reduced from 1.5rem
+    flex-wrap: wrap;
+    align-items: center;
+    flex-grow: 1;
+
+    .nav-link {
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: bold;
+      font-size: 0.75rem; // reduced from 0.9rem
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      padding: 0.35rem 0.15rem; // reduced from 0.5rem //////////
+      position: relative;
+
+      i {
+        margin-right: 0.35rem; // reduced from 0.5rem
+        font-size: 0.8rem; // reduced from 1rem
+      }
+
+      &.active {
+        color: white;
+        transform: scale(1.05);
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -3px; // reduced from -4px
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: white;
+
+        }
+      }
+
+      &:hover {
+        color: #FFC72C;
+      }
+
+      // Styles for more-links
+      &.more-link {
+        display: none; // Hidden by default
+
+        &[style*="display: flex"] {
+          display: flex !important; // Show when showMore is true
+        }
+      }
+    }
+
+    .more-toggle {
+      margin-left: auto;
+      gap: 0.2rem; // reduced from 0.3rem
+      padding: 0.35rem 0.6rem; // reduced from 0.5rem 0.8rem
+      border-radius: 3px; // reduced from 4px
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: bold;
+      font-size: 0.75rem; // reduced from 0.9rem
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: white;
+      }
+
+      .pi-ellipsis-h {
+        margin-right: 0;
+        font-size: 0.8rem; // added to reduce icon size
+      }
+    }
+    .selected{
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem; // reduced from 1rem
+
+    .nav-links {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-bar {
+    padding: 0.7rem; // reduced from 1rem
+  }
+
+  .nav-links {
+    gap: 0.7rem; // reduced from 1rem
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-links .nav-link {
+    font-size: 0.65rem; // reduced from 0.8rem
+  }
+
+  .nav-links {
+    gap: 0.35rem; // reduced from 0.5rem
+  }
+}

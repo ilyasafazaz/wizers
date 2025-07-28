@@ -1,0 +1,39 @@
+<div class="cards-container">
+  <div class="card" *ngFor="let card of cards" (click)="onCardClick(card)">
+    <div class="card-image">
+      <img [src]="card.picture" [alt]="card.name" />
+      <!--      <div class="favorite-btn" (click)="toggleFavorite(card, $event)" [class.active]="card.isFavorite">-->
+      <!--        <i class="pi pi-heart" [class.pi-heart-fill]="card.isFavorite"></i>-->
+      <!--      </div>-->
+    </div>
+
+    <div class="card-content">
+      <div class="card-header">
+        <span class="espace" *ngIf="!hideEspaceAndTheme">
+          <i [class]="'pi ' + getEspaceIcon(card.espace || currentEspaceId)"></i>
+        </span>
+        <span class="theme" *ngIf="!hideEspaceAndTheme">{{ card.theme }}</span>
+        <div class="rating">
+          <i
+            *ngFor="let star of getStarArray(card.rating)"
+            class="pi pi-star"
+            [class.filled]="isStarFilled(star, card.rating)"
+          ></i>
+        </div>
+      </div>
+
+      <h3 class="card-name">{{ card.name }}</h3>
+
+      <div class="card-contacts" *ngIf="!hideContacts">
+        <div class="contact-item">
+          <i class="pi pi-phone"></i>
+          <span>{{ card.telephone }}</span>
+        </div>
+        <div class="contact-item">
+          <i class="pi pi-envelope"></i>
+          <span>{{ card.email }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

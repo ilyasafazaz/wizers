@@ -1,0 +1,141 @@
+.header-container {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 10px 16px;
+  font-size: 12px;
+  position: relative;
+
+  .left-section,
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .custom-select {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
+  .currency-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .pi {
+      font-size: 1rem;
+      color: white;
+    }
+  }
+
+  .custom-dropdown {
+    position: relative;
+    background-color: black;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-width: 110px;
+
+    .flag-icon {
+      width: 18px;
+      height: 12px;
+      margin-right: 7px;
+    }
+
+    .lang-label {
+      color: white;
+      font-size: 11px;
+    }
+
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #111;
+      border: 1px solid #444;
+      border-radius: 3px;
+      width: 100%;
+      z-index: 100;
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px 8px;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+
+        &:hover {
+          background-color: #222;
+        }
+
+        &.selected {
+          background-color: #2980b9;
+        }
+
+        .flag-icon {
+          margin-right: 7px;
+        }
+
+        span {
+          color: white;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .cart-count {
+    background-color: white;
+    color: black;
+    padding: 0 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 3px;
+  }
+
+  i {
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  span {
+    margin-left: 4px;
+  }
+
+  .action-button {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #111;
+    }
+
+    i {
+      font-size: 0.9rem;
+    }
+
+    span {
+      font-size: 11px;
+    }
+  }
+}

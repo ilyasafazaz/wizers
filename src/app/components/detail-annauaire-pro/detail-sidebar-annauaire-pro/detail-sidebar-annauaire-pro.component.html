@@ -1,0 +1,21 @@
+<div class="sidebar" [class.expanded]="isExpanded">
+  <div class="sidebar-items">
+    <div
+      class="sidebar-item"
+      [class.active]="activeSidebarItem === 'map'"
+      (click)="onSidebarItemClick('map')"
+      title="Carte">
+      <i class="pi pi-map-marker"></i>
+      <span class="item-label" *ngIf="isExpanded">Carte</span>
+    </div>
+
+    <div
+      class="sidebar-item"
+      [class.active]="activeSidebarItem === 'share'"
+      (click)="onSidebarItemClick('share')"
+      title="Partager">
+      <i class="pi pi-share-alt"></i>
+      <span class="item-label" *ngIf="isExpanded">Partager</span>
+    </div>
+  </div>
+</div>

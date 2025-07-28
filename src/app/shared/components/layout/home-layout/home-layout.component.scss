@@ -1,0 +1,498 @@
+.home-layout-container {
+  .header-container {
+    background-color: #000080;
+    color: #00FFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.home-content-container {
+  position: relative;
+  min-height: calc(100vh - 150px);
+  background: url('/assets/background7.jpg') no-repeat center center/cover;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  app-filter-sidebar {
+    flex-shrink: 0;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+
+    :host ::ng-deep .filter-sidebar {
+      width: 300px;
+      height: 100%;
+      background: white;
+      border-right: 1px solid #e0e0e0;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.with-sidebar {
+    app-filter-sidebar {
+      width: 25%
+    }
+  }
+}
+
+.main-content-area {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-height: calc(100vh - 150px);
+  flex: 1;
+  padding: 1.4rem;
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+  min-width: 0; // Allows flex item to shrink below content size
+}
+
+.filter-controls {
+  margin-bottom: 1rem;
+
+  .filter-toggle-btn {
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: #3a70a4;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+.loading-message, .error-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #ffeaea;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #666;
+  font-size: 1.1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.content-wrapper {
+  .home-content {
+    .espaces-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    // Filtered results styling - shared between home and espace content
+    .filtered-results {
+      .results-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #4682B4;
+
+        .results-title {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #4682B4;
+          margin: 0 0 0.5rem;
+        }
+
+        .results-count {
+          color: #666;
+          font-size: 1rem;
+          margin: 0;
+        }
+      }
+
+      .filtered-cards {
+        :host ::ng-deep .cards-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          max-width: 100%;
+
+          .card {
+            max-width: none;
+          }
+        }
+      }
+    }
+
+    .espace-section {
+      .espace-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #4682B4;
+
+        .espace-title {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #4682B4;
+          margin: 0;
+        }
+
+        .show-more-btn {
+          background: linear-gradient(135deg, #4682B4, #5a9bd4);
+          color: white;
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(70, 130, 180, 0.3);
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(70, 130, 180, 0.4);
+            background: linear-gradient(135deg, #3a70a4, #4682B4);
+          }
+
+          i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+          }
+
+          &:hover i {
+            transform: translateX(3px);
+          }
+        }
+      }
+
+      .espace-cards {
+        :host ::ng-deep .cards-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          max-width: 100%;
+
+          .card {
+            max-width: none;
+          }
+
+          // Ensure we show maximum 4 cards per espace
+          .card:nth-child(n+5) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .espace-content {
+    // Apply filtered results styling to espace content as well
+    .filtered-results {
+      .results-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #4682B4;
+
+        .results-title {
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: #4682B4;
+          margin: 0 0 0.5rem;
+        }
+
+        .results-count {
+          color: #666;
+          font-size: 1rem;
+          margin: 0;
+        }
+      }
+
+      .filtered-cards {
+        :host ::ng-deep .cards-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          max-width: 100%;
+
+          .card {
+            max-width: none;
+          }
+        }
+      }
+    }
+
+    h2 {
+      color: #4682B4;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid #4682B4;
+    }
+
+    :host ::ng-deep .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 100%;
+
+      .card {
+        max-width: none;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .home-content-container {
+    app-filter-sidebar {
+      :host ::ng-deep .filter-sidebar {
+        width: 280px;
+      }
+    }
+
+    &.with-sidebar {
+      app-filter-sidebar {
+        width: 280px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .home-content-container {
+    margin: 0.7rem 1rem;
+
+    // On mobile, sidebar becomes full overlay (absolute positioning)
+    app-filter-sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      z-index: 1000;
+      transition: width 0.3s ease;
+
+      :host ::ng-deep .filter-sidebar {
+        width: 100%;
+        box-shadow: none;
+        border-right: none;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &.with-sidebar {
+      app-filter-sidebar {
+        width: 100%;
+
+        :host ::ng-deep .filter-sidebar {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  .main-content-area {
+    padding: 1rem;
+  }
+
+  .filter-controls {
+    margin-bottom: 0.7rem;
+  }
+
+  .content-wrapper .home-content {
+    .espace-section {
+      .espace-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .espace-title {
+          font-size: 1.3rem;
+        }
+
+        .show-more-btn {
+          align-self: flex-end;
+        }
+      }
+    }
+
+    .espace-cards :host ::ng-deep .cards-container,
+    .filtered-cards :host ::ng-deep .cards-container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .filtered-results .results-header {
+      .results-title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .content-wrapper .espace-content {
+    .filtered-results {
+      .results-header .results-title {
+        font-size: 1.4rem;
+      }
+
+      .filtered-cards :host ::ng-deep .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+    }
+  }
+
+  // Mobile overlay
+  .home-content-container.with-sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content-container {
+    margin: 0.5rem 0.7rem;
+  }
+
+  .main-content-area {
+    padding: 0.7rem;
+  }
+
+  .content-wrapper .home-content {
+    .espaces-grid {
+      gap: 2rem;
+    }
+
+    .espace-section {
+      .espace-header {
+        .espace-title {
+          font-size: 1.2rem;
+        }
+
+        .show-more-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .espace-cards :host ::ng-deep .cards-container,
+    .filtered-cards :host ::ng-deep .cards-container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .filtered-results .results-header {
+      .results-title {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .content-wrapper .espace-content {
+    .filtered-results {
+      .results-header .results-title {
+        font-size: 1.2rem;
+      }
+
+      .filtered-cards :host ::ng-deep .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    :host ::ng-deep .cards-container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .home-content-container {
+    app-filter-sidebar {
+      :host ::ng-deep .filter-sidebar {
+        .sidebar-header {
+          padding: 1rem;
+
+          h3 {
+            font-size: 1rem;
+          }
+        }
+
+        .sidebar-content {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  .content-wrapper .home-content {
+    .espace-cards :host ::ng-deep .cards-container,
+    .filtered-cards :host ::ng-deep .cards-container {
+      grid-template-columns: 1fr;
+    }
+
+    .espace-section .espace-header {
+      .espace-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    .filtered-results .results-header {
+      .results-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .content-wrapper .espace-content {
+    .filtered-results {
+      .results-header .results-title {
+        font-size: 1.1rem;
+      }
+
+      .filtered-cards :host ::ng-deep .cards-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    :host ::ng-deep .cards-container {
+      grid-template-columns: 1fr;
+    }
+  }
+}

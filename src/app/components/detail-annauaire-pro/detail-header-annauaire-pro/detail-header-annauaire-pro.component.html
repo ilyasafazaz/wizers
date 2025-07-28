@@ -1,0 +1,72 @@
+<!-- detail-header-annauaire-pro.component.html -->
+<div class="detail-header" *ngIf="currentCard">
+  <!-- Hero section with slideshow -->
+  <div class="hero-section">
+    <div class="slideshow-container">
+      <!-- Image slide -->
+      <div class="slide">
+        <img [src]="currentImage" [alt]="currentCard.name" class="hero-image">
+      </div>
+
+      <!-- Navigation arrows (only show if more than 1 slide) -->
+<!--      <div class="slide-nav" *ngIf="currentSlides.length > 1">-->
+<!--        <button class="nav-btn prev-btn" (click)="prevSlide()" type="button">-->
+<!--          <i class="pi pi-chevron-left"></i>-->
+<!--        </button>-->
+<!--        <button class="nav-btn next-btn" (click)="nextSlide()" type="button">-->
+<!--          <i class="pi pi-chevron-right"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+
+      <!-- Dot indicators in bottom right (only show if more than 1 slide) -->
+      <div class="dots-container" *ngIf="currentSlides.length > 1">
+        <button
+          *ngFor="let slide of currentSlides; let i = index"
+          class="dot"
+          [class.active]="i === currentSlideIndex"
+          (click)="goToSlide(i)"
+          type="button">
+        </button>
+      </div>
+    </div>
+
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Info section -->
+  <div class="info">
+    <!-- General info section -->
+    <div class="general-info">
+      <h2 class="card-name">{{ currentCard.name }}</h2>
+
+      <div class="card-details">
+        <div class="detail-item">
+          <i class="pi pi-tag theme-icon"></i>
+          <span>{{ currentCard.theme }}</span>
+        </div>
+
+        <div class="detail-item">
+          <i class="pi pi-phone"></i>
+          <span>{{ currentCard.telephone }}</span>
+        </div>
+
+        <div class="detail-item">
+          <i class="pi pi-envelope"></i>
+          <span>{{ currentCard.email }}</span>
+        </div>
+
+        <div class="detail-item">
+          <i class="pi pi-star rating-icon"></i>
+          <div class="rating">
+            <i
+              *ngFor="let star of getStarArray(currentCard.rating)"
+              class="pi pi-star"
+              [class.filled]="isStarFilled(star, currentCard.rating)"
+            ></i>
+            <span class="rating-text">({{ currentCard.rating }}/5)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

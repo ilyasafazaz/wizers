@@ -1,0 +1,76 @@
+{
+  "menuOrder": ["Exploits", "Soyons Solidaires", "Restons Actifs", "Lieux, Moments et Actions", "Nos Cloîtres", "Invest", "Articles", "Études"],
+  "menuIcons": {
+    "Exploits": "pi pi-trophy",
+    "Soyons Solidaires": "pi pi-heart-fill",
+    "Restons Actifs": "pi pi-running",
+    "Lieux, Moments et Actions": "pi pi-map",
+    "Nos Cloîtres": "pi pi-home",
+    "Invest": "pi pi-dollar",
+    "Articles": "pi pi-file",
+    "Études": "pi pi-chart-line"
+  },
+  "menus": {
+    "Restons Actifs": [
+      {
+        "id": 1,
+        "main_category": "Activités Physiques",
+        "sub_categories": [
+          "Gymnastique douce",
+          "Marche nordique",
+          "Natation senior",
+          "Danse",
+          "Yoga"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/actif1.jpg",
+            "theme": "Activités Physiques",
+            "name": "Club Marche Nordique 60+",
+            "telephone": "+33 6 12 34 56 78",
+            "email": "contact@marche60.fr",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Soyons Solidaires": [
+      {
+        "id": 1,
+        "main_category": "Actions Solidaires",
+        "sub_categories": [
+          "Bénévolat",
+          "Mentorat",
+          "Partage de compétences",
+          "Aide aux plus fragiles"
+        ],
+        "cards": [
+          {
+            "id": 2,
+            "picture": "assets/cards/solidaire1.jpg",
+            "theme": "Actions Solidaires",
+            "name": "Réseau d'Aide aux Isolés",
+            "telephone": "+33 6 98 76 54 32",
+            "email": "contact@aide-isoles.fr",
+            "rating": 5,
+            "isFavorite": true
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/actif2.jpg",
+      "theme": "Toujours Actifs",
+      "name": "Pierre, 82 ans: Mon premier marathon",
+      "telephone": "",
+      "email": "",
+      "rating": 5,
+      "isFavorite": true
+    }
+  ]
+}

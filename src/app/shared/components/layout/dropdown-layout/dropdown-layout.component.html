@@ -1,0 +1,77 @@
+<div class="active-dropdown" *ngIf="showDropdown && espaceData">
+  <!-- Close button for the whole component -->
+  <div class="global-close-btn" (click)="closeDropdown()">
+    <i class="pi pi-times"></i>
+  </div>
+
+  <!-- Main container for espace-menu and sub-dropdown side by side -->
+  <div class="dropdown-container">
+    <!-- Tabs like Coopératives, Entreprises - Now positioned left -->
+    <div class="espace-menu" *ngIf="espaceData">
+      <div class="menu-items">
+        <span
+          *ngFor="let menuKey of espaceData.menuOrder"
+          class="menu-item"
+          (click)="selectMenu(menuKey)"
+          [ngClass]="{ active: selectedMenuKey === menuKey }"
+        >
+          <i class="pi" [ngClass]="espaceData.menuIcons[menuKey]" style="margin-right: 0.5rem;"></i>
+          {{ menuKey }}
+          <i class="pi" [ngClass]="selectedMenuKey === menuKey ? 'pi-chevron-left' : 'pi-chevron-right'"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- Sub Dropdown with Main Categories - Now positioned right -->
+    <div class="sub-dropdown" *ngIf="selectedMenuKey && espaceData">
+      <div class="sub-content">
+        <div class="vertical-separator-test"></div>
+        <!-- LEFT: Main Categories -->
+        <div class="main-categories">
+          <div
+            *ngFor="let cat of espaceData.menus[selectedMenuKey]"
+            class="main-category"
+            [ngClass]="{ active: selectedMainCategoryId === cat.id }"
+            (click)="selectMainCategory(cat.id)"
+          >
+            {{ cat.main_category }}
+            <i class="pi" [ngClass]="selectedMainCategoryId === cat.id ? 'pi-chevron-left' : 'pi-chevron-right'"></i>
+          </div>
+        </div>
+
+        <!-- Vertical separator line -->
+        <div class="vertical-separator"></div>
+
+        <!-- CENTER: Sub-Categories -->
+        <div class="sub-categories" *ngIf="currentMainCategory">
+          <div class="sub-categories-container">
+            <div class="sub-categories-items">
+              <div
+                *ngFor="let sub of getSubCategories(); trackBy: trackByIndex"
+                class="subcategory"
+                (click)="selectSubCategory(sub)"
+                [ngClass]="{ active: selectedSubCategory === sub }"
+              >
+                <i class="pi pi-circle-on"></i> {{ sub }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Vertical separator line -->
+        <div class="vertical-separator"></div>
+
+        <!-- RIGHT: Cards -->
+        <div class="promo-cards" *ngIf="currentMainCategory">
+          <app-card-layout
+            [cards]="getPromoCards()"
+            [currentEspaceId]="currentEspaceId"
+            (cardClick)="onCardClick($event)"
+            [hideContacts]="true"
+            [hideEspaceAndTheme]="true"
+            class="compact"
+          ></app-card-layout>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

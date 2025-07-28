@@ -1,0 +1,223 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // reduced from 300px
+  gap: 2rem; // reduced from 1.5rem
+  padding: 0.7rem; // reduced from 1rem
+}
+
+.card {
+  background: white;
+  border-radius: 8px; // reduced from 12px
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); // reduced shadow
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-3px); // reduced from -5px
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); // reduced shadow
+    transform: scale(1.05); /* Zooms to 110% */
+  }
+
+  .card-image {
+    position: relative;
+    height: 140px; // reduced from 200px
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-content {
+    padding: 1rem; // reduced from 1.5rem
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem; // reduced from 1rem
+
+      .espace {
+        i {
+          color: black;
+          font-size: 1.5rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      .theme {
+        background: saddlebrown;
+        color: white;
+        padding: 0.2rem 0.6rem; // reduced from 0.3rem 0.8rem
+        border-radius: 12px; // reduced from 15px
+        font-size: 0.7rem; // reduced from 0.8rem
+        font-weight: 500;
+      }
+
+      .rating {
+        display: flex;
+        gap: 0.15rem; // reduced from 0.2rem
+
+        .pi-star {
+          color: #ddd;
+          font-size: 0.8rem; // reduced from 1rem
+          transition: color 0.3s ease;
+
+          &.filled {
+            color: #FFAA33;
+          }
+        }
+      }
+    }
+
+    .card-name {
+      font-size: 1rem; // reduced from 1.3rem
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.7rem; // reduced from 1rem
+      line-height: 1.3; // reduced from 1.4
+    }
+
+    .card-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem; // reduced from 0.8rem
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem; // reduced from 0.8rem
+        color: #666;
+        font-size: 0.75rem; // reduced from 0.9rem
+
+        i {
+          color: #666;
+          font-size: 0.8rem; // reduced from 1rem
+          width: 14px; // reduced from 16px
+          text-align: center;
+        }
+
+        span {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // reduced from 250px
+    gap: 0.7rem; // reduced from 1rem
+    padding: 0.35rem; // reduced from 0.5rem
+  }
+
+  .card {
+    .card-image {
+      height: 120px; // reduced from 150px
+    }
+
+    .card-content {
+      padding: 0.7rem; // reduced from 1rem
+
+      .card-name {
+        font-size: 0.9rem; // reduced from 1.1rem
+      }
+
+      .card-header {
+        .espace i {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Existing compact styles
+:host-context(.compact) .cards-container {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); // reduced from 180px
+  gap: 0.7rem; // reduced from 1rem
+  padding: 0.35rem; // reduced from 0.5rem
+}
+
+// New styles specifically for dropdown cards - using global selector
+:host(.dropdown-cards) .card {
+  .card-image {
+    height: 80px !important; // Much smaller height for dropdown
+  }
+
+  .card-content {
+    padding: 0.5rem !important; // Reduced padding
+
+    .card-header {
+      margin-bottom: 0.4rem !important; // Reduced margin
+
+      .rating {
+        .pi-star {
+          font-size: 0.7rem !important; // Smaller stars
+        }
+      }
+    }
+
+    .card-name {
+      font-size: 0.8rem !important; // Smaller text
+      margin-bottom: 0.4rem !important; // Reduced margin
+      line-height: 1.2 !important;
+    }
+  }
+}
+
+// Additional styles for dropdown cards in compact mode
+:host(.compact.dropdown-cards) .cards-container {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important; // Even smaller cards
+  gap: 0.5rem !important;
+  padding: 0.25rem !important;
+}
+
+// Alternative approach using CSS class directly
+.dropdown-cards .card {
+  .card-image {
+    height: 80px !important; // Much smaller height for dropdown
+  }
+
+  .card-content {
+    padding: 0.5rem !important; // Reduced padding
+
+    .card-header {
+      margin-bottom: 0.4rem !important; // Reduced margin
+
+      .rating {
+        .pi-star {
+          font-size: 0.7rem !important; // Smaller stars
+        }
+      }
+    }
+
+    .card-name {
+      font-size: 0.8rem !important; // Smaller text
+      margin-bottom: 0.4rem !important; // Reduced margin
+      line-height: 1.2 !important;
+    }
+  }
+}
+
+.dropdown-cards .cards-container {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+  gap: 0.5rem !important;
+  padding: 0.25rem !important;
+}

@@ -1,0 +1,72 @@
+{
+  "menuOrder": ["Divers Articles", "Parus dans la Presse", "Événements", "Événements par les Membres", "Sorties (livres...)"],
+  "menuIcons": {
+    "Divers Articles": "pi pi-file",
+    "Parus dans la Presse": "pi pi-newspaper",
+    "Événements": "pi pi-calendar",
+    "Événements par les Membres": "pi pi-users",
+    "Sorties (livres...)": "pi pi-book"
+  },
+  "menus": {
+    "Divers Articles": [
+      {
+        "id": 1,
+        "main_category": "Santé et Bien-être",
+        "sub_categories": [
+          "Conseils médicaux",
+          "Nutrition senior",
+          "Activités physiques",
+          "Bien-être mental"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/article1.jpg",
+            "theme": "Santé et Bien-être",
+            "name": "10 Conseils pour un Hiver en Forme",
+            "telephone": "",
+            "email": "",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ],
+    "Événements": [
+      {
+        "id": 1,
+        "main_category": "Activités Locales",
+        "sub_categories": [
+          "Ateliers",
+          "Conférences",
+          "Sorties culturelles",
+          "Rencontres intergénérationnelles"
+        ],
+        "cards": [
+          {
+            "id": 2,
+            "picture": "assets/cards/event1.jpg",
+            "theme": "Activités Locales",
+            "name": "Forum du Bien Vieillir",
+            "telephone": "+33 6 77 88 99 00",
+            "email": "contact@forum-bienvieillir.fr",
+            "rating": 5,
+            "isFavorite": true
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/actu1.jpg",
+      "theme": "Événements & Actualités",
+      "name": "Nouvelle Loi sur la Retraite",
+      "telephone": "",
+      "email": "",
+      "rating": 3,
+      "isFavorite": false
+    }
+  ]
+}

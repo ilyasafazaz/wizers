@@ -1,0 +1,75 @@
+{
+  "menuOrder": ["Divers Conseils", "Démarches Administratives", "Adresses Utiles", "Liens Utiles", "Textes de Lois", "Téléchargements", "Connaissances"],
+  "menuIcons": {
+    "Divers Conseils": "pi pi-info-circle",
+    "Démarches Administratives": "pi pi-file-edit",
+    "Adresses Utiles": "pi pi-map-marker",
+    "Liens Utiles": "pi pi-link",
+    "Textes de Lois": "pi pi-file",
+    "Téléchargements": "pi pi-download",
+    "Connaissances": "pi pi-book"
+  },
+  "menus": {
+    "Démarches Administratives": [
+      {
+        "id": 1,
+        "main_category": "Papiers et Formulaires",
+        "sub_categories": [
+          "Retraite",
+          "Allocations",
+          "Logement",
+          "Santé",
+          "Fiscalité"
+        ],
+        "cards": [
+          {
+            "id": 1,
+            "picture": "assets/cards/admin1.jpg",
+            "theme": "Papiers et Formulaires",
+            "name": "Guide des Démarches Retraite",
+            "telephone": "",
+            "email": "",
+            "rating": 5,
+            "isFavorite": true
+          }
+        ]
+      }
+    ],
+    "Adresses Utiles": [
+      {
+        "id": 1,
+        "main_category": "Services Publics",
+        "sub_categories": [
+          "Mairies",
+          "Centres médicaux",
+          "Associations d'aide",
+          "Services sociaux"
+        ],
+        "cards": [
+          {
+            "id": 2,
+            "picture": "assets/cards/adresse1.jpg",
+            "theme": "Services Publics",
+            "name": "Annuaire des CLIC",
+            "telephone": "",
+            "email": "",
+            "rating": 4,
+            "isFavorite": false
+          }
+        ]
+      }
+    ]
+  },
+  "generalCards": [
+    {
+      "id": 1001,
+      "picture": "assets/cards/info1.jpg",
+      "theme": "Informations Pratiques",
+      "name": "Guide du Senior 2023",
+      "telephone": "",
+      "email": "",
+      "rating": 5,
+      "isFavorite": true
+    }
+  ]
+}
