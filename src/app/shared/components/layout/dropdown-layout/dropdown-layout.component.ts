@@ -32,14 +32,19 @@ export class DropdownLayoutComponent {
     return null;
   }
 
+  // Modified: Only visual selection, no content change
   selectMenu(key: string): void {
+    // Only emit for visual state change, don't change content
     this.menuSelected.emit(key);
   }
 
+  // Modified: Only visual selection, no content change
   selectMainCategory(id: number): void {
+    // Only emit for visual state change, don't change content
     this.mainCategorySelected.emit(id);
   }
 
+  // This is the only method that should change content
   selectSubCategory(subCategory: string): void {
     this.subCategorySelected.emit(subCategory);
   }
@@ -65,14 +70,12 @@ export class DropdownLayoutComponent {
     return this.currentMainCategory.cards || [];
   }
 
-
   getSubCategories(): string[] {
     if (!this.currentMainCategory?.sub_categories) return [];
 
     const subCategories = this.currentMainCategory.sub_categories;
     return subCategories;
   }
-
 
   // TrackBy function for better performance
   trackByIndex(index: number, item: any): number {

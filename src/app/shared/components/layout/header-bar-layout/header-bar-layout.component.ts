@@ -17,10 +17,9 @@ export class HeaderBarLayoutComponent {
   @Output() toggleMore = new EventEmitter<boolean>();
 
   handleNavClick(id: string): void {
-    // Only handle dropdown toggle, no routing or content changes
     // If clicking the same item that's already active, toggle dropdown
     if (this.currentId === id) {
-      this.navClick.emit('toggle'); // Just toggle the dropdown
+      this.navClick.emit('toggle');
     } else {
       // If clicking a different item, show its dropdown
       this.navClick.emit(id);
@@ -30,5 +29,10 @@ export class HeaderBarLayoutComponent {
   toggleShowMore(): void {
     this.showMore = !this.showMore;
     this.toggleMore.emit(this.showMore);
+  }
+
+  // Helper method to determine if an item should show as active
+  isItemActive(pageId: string): boolean {
+    return this.currentId === pageId && this.showDropdown;
   }
 }

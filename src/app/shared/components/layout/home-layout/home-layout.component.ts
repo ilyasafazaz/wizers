@@ -177,22 +177,22 @@ export class HomeLayoutComponent implements OnInit {
   }
 
   handleNavClick(action: string): void {
-    // Remove all navigation logic - only handle dropdown display
-
     if (action === 'toggle') {
       // Toggle dropdown for the same item
       this.showDropdown = !this.showDropdown;
       if (!this.showDropdown) {
         this.resetDropdownState();
+        // Reset the selectedHeaderItem when closing dropdown
+        this.selectedHeaderItem = '';
       }
       return;
     }
-
+  
     // Different item clicked - switch dropdown to that item's data
     this.selectedHeaderItem = action;
     this.loadEspaceDataForDropdown(action);
     this.showDropdown = true;
-
+  
     // Reset dropdown selections when switching header items
     this.resetDropdownState();
   }
@@ -232,7 +232,8 @@ export class HomeLayoutComponent implements OnInit {
   }
 
   public hasDropdownSelections(): boolean {
-    return !!(this.selectedMenuKey || this.selectedMainCategoryId || this.selectedSubCategory);
+    // Only subcategory selection should be considered as having "selections" for content change
+    return !!(this.selectedSubCategory);
   }
 
   resetDropdownState(): void {
@@ -248,15 +249,15 @@ export class HomeLayoutComponent implements OnInit {
     this.selectedMenuKey = key;
     this.selectedMainCategoryId = null;
     this.selectedSubCategory = null;
-    this.updateDisplayedCards();
-    this.updateCurrentPageTitle();
+    // Remove updateDisplayedCards() and updateCurrentPageTitle() calls
+    // These selections should only be visual
   }
 
   selectMainCategory(id: number): void {
     this.selectedMainCategoryId = id;
     this.selectedSubCategory = null;
-    this.updateDisplayedCards();
-    this.updateCurrentPageTitle();
+    // Remove updateDisplayedCards() and updateCurrentPageTitle() calls
+    // These selections should only be visual
   }
 
   selectSubCategory(subCategory: string): void {
@@ -271,33 +272,18 @@ export class HomeLayoutComponent implements OnInit {
   }
 
   updateDisplayedCards(): void {
-    // If no dropdown selections, show home content (all espaces preview)
-    if (!this.hasDropdownSelections()) {
+    // If no subcategory selected, show home content (all espaces preview)
+    if (!this.selectedSubCategory) {
       this.displayedCards = [];
       return;
     }
-
+  
     if (!this.espaceData) {
       this.displayedCards = [];
       return;
     }
-
-    // Case 1: Only menu selected - show menu-level cards
-    if (this.selectedMenuKey && !this.selectedMainCategoryId && !this.selectedSubCategory) {
-      const menu = this.espaceData.menus?.[this.selectedMenuKey];
-      this.displayedCards = menu ? menu.flatMap((cat: any) => cat.cards || []) : [];
-      return;
-    }
-
-    // Case 2: Main category selected - show main category cards
-    if (this.selectedMenuKey && this.selectedMainCategoryId && !this.selectedSubCategory) {
-      const menu = this.espaceData.menus?.[this.selectedMenuKey];
-      const category = menu?.find((cat: any) => cat.id === this.selectedMainCategoryId);
-      this.displayedCards = category?.cards || [];
-      return;
-    }
-
-    // Case 3: Sub-category selected - show sub-category cards
+  
+    // Only show cards when subcategory is selected
     if (this.selectedMenuKey && this.selectedMainCategoryId && this.selectedSubCategory) {
       const menu = this.espaceData.menus?.[this.selectedMenuKey];
       const category = menu?.find((cat: any) => cat.id === this.selectedMainCategoryId);
@@ -308,7 +294,7 @@ export class HomeLayoutComponent implements OnInit {
       }
       return;
     }
-
+  
     this.displayedCards = [];
   }
 
