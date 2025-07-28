@@ -31,11 +31,14 @@ export class DetailAnnauaireProComponent implements OnInit {
   currentCard: Card | null = null;
   activeMenu: string = 'about';
 
+  // Current selected header item (for dropdown display only)
+  selectedHeaderItem: string = '';
+
   // Sidebar properties
   isSidebarExpanded: boolean = false;
   activeSidebarItem: string | null = null;
 
-  // Dropdown state properties
+  // Dropdown state properties - matching home-layout
   selectedMenuKey: string | null = null;
   selectedMainCategoryId: number | null = null;
   selectedSubCategory: string | null = null;
@@ -193,6 +196,100 @@ export class DetailAnnauaireProComponent implements OnInit {
     }
   }
 
+  // Header navigation - matching home-layout behavior
+  handleNavClick(action: string): void {
+    if (action === 'toggle') {
+      // Toggle dropdown for the same item
+      this.showDropdown = !this.showDropdown;
+      if (!this.showDropdown) {
+        this.resetDropdownState();
+        // Reset the selectedHeaderItem when closing dropdown
+        this.selectedHeaderItem = '';
+      }
+      return;
+    }
+  
+    // Different item clicked - switch dropdown to that item's data
+    this.selectedHeaderItem = action;
+    this.loadEspaceDataForDropdown(action);
+    this.showDropdown = true;
+  
+    // Reset dropdown selections when switching header items
+    this.resetDropdownState();
+  }
+
+  private loadEspaceDataForDropdown(espaceId: string): void {
+    // If it's the current espace, use existing data
+    if (espaceId === this.currentId && this.espaceData) {
+      // Use current espaceData for dropdown
+      return;
+    }
+
+    // Load the data for dropdown display only
+    this.http.get<any>(`assets/data/${espaceId}.json`).subscribe({
+      next: (data) => {
+        // Only update dropdown data if it's for a different espace
+        if (espaceId !== this.currentId) {
+          this.espaceData = data;
+        }
+      },
+      error: (error) => {
+        console.error(`Error loading data for ${espaceId}:`, error);
+      }
+    });
+  }
+
+  resetDropdownState(): void {
+    this.selectedMenuKey = null;
+    this.selectedMainCategoryId = null;
+    this.selectedSubCategory = null;
+  }
+
+  // Dropdown selection methods - matching home-layout behavior
+  selectMenu(key: string): void {
+    this.selectedMenuKey = key;
+    this.selectedMainCategoryId = null;
+    this.selectedSubCategory = null;
+  }
+
+  selectMainCategory(id: number): void {
+    this.selectedMainCategoryId = id;
+    this.selectedSubCategory = null;
+  }
+
+  selectSubCategory(subCategory: string): void {
+    this.selectedSubCategory = subCategory;
+    // Navigate to espace (home-layout) with the selected subcategory - FIXED HERE
+    this.router.navigate(['/espace'], {
+      queryParams: {
+        espace: this.selectedHeaderItem,
+        menu: this.selectedMenuKey,
+        category: this.selectedMainCategoryId,
+        subcategory: subCategory
+      }
+    });
+  }
+
+  closeDropdown(): void {
+    this.showDropdown = false;
+    this.resetDropdownState();
+    this.selectedHeaderItem = '';
+  }
+
+  get currentMainCategory() {
+    if (this.selectedMenuKey && this.selectedMainCategoryId !== null) {
+      // Use the appropriate espaceData based on selected header item
+      const dataToUse = this.selectedHeaderItem === this.currentId ? 
+        this.espaceData : 
+        this.espaceData; // In this case, espaceData is updated when different header item is selected
+      
+      if (dataToUse?.menus?.[this.selectedMenuKey]) {
+        return dataToUse.menus[this.selectedMenuKey].find((cat: any) => cat.id === this.selectedMainCategoryId);
+      }
+    }
+    return null;
+  }
+
   // Social sharing methods
   shareOnSocial(platform: string): void {
     if (!this.currentCard) return;
@@ -261,39 +358,7 @@ export class DetailAnnauaireProComponent implements OnInit {
       `${this.currentCard.name} est un organisme professionnel dans le domaine de ${this.currentCard.theme}. Nous nous efforçons de fournir des services de qualité et un accompagnement personnalisé à tous nos clients.`;
   }
 
-  handleNavClick(id: string): void {
-    if (this.currentId === id) {
-      this.showDropdown = !this.showDropdown;
-    } else {
-      this.showDropdown = false;
-      this.router.navigate(['/espace', id]);
-    }
-  }
-
   toggleMore(showMore: boolean): void {
     this.showMore = showMore;
-  }
-
-  // Dropdown event handlers
-  onMenuSelected(menuKey: string): void {
-    this.selectedMenuKey = menuKey;
-    this.selectedMainCategoryId = null;
-    this.selectedSubCategory = null;
-  }
-
-  onMainCategorySelected(categoryId: number): void {
-    this.selectedMainCategoryId = categoryId;
-    this.selectedSubCategory = null;
-  }
-
-  onSubCategorySelected(subCategory: string): void {
-    this.selectedSubCategory = subCategory;
-  }
-
-  closeDropdown(): void {
-    this.showDropdown = false;
-    this.selectedMenuKey = null;
-    this.selectedMainCategoryId = null;
-    this.selectedSubCategory = null;
   }
 }

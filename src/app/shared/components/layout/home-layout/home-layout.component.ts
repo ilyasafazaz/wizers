@@ -78,6 +78,13 @@ export class HomeLayoutComponent implements OnInit {
     // Load all espaces data first to enable filtering on all pages
     this.loadAllEspacesData();
 
+    // Handle query parameters for navigation from detail pages
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams['espace'] && queryParams['subcategory']) {
+        this.handleQueryParamNavigation(queryParams);
+      }
+    });
+
     // Only handle route changes for detail pages or explicit navigation
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
@@ -90,6 +97,26 @@ export class HomeLayoutComponent implements OnInit {
         this.currentPageTitle = 'Accueil';
       }
     });
+  }
+
+  private handleQueryParamNavigation(queryParams: any): void {
+    // Set the selected header item and load its data
+    this.selectedHeaderItem = queryParams['espace'];
+    this.selectedMenuKey = queryParams['menu'];
+    this.selectedMainCategoryId = queryParams['category'] ? +queryParams['category'] : null;
+    this.selectedSubCategory = queryParams['subcategory'];
+    
+    // Load the espace data for dropdown
+    this.loadEspaceDataForDropdown(this.selectedHeaderItem);
+    
+    // Show dropdown
+    this.showDropdown = true;
+    
+    // Update displayed cards and title
+    setTimeout(() => {
+      this.updateDisplayedCards();
+      this.updateCurrentPageTitle();
+    }, 100); // Small delay to ensure espaceData is loaded
   }
 
   private handleExplicitNavigation(id: string): void {
@@ -135,6 +162,13 @@ export class HomeLayoutComponent implements OnInit {
         this.displayedCards = [];
         this.currentPageTitle = 'Accueil';
         this.isLoading = false;
+
+        // If we have query params to handle, process them after data is loaded
+        this.route.queryParams.subscribe(queryParams => {
+          if (queryParams['espace'] && queryParams['subcategory']) {
+            this.handleQueryParamNavigation(queryParams);
+          }
+        });
       },
       error: (error) => {
         console.error('Error loading espaces data:', error);
@@ -202,6 +236,12 @@ export class HomeLayoutComponent implements OnInit {
     this.http.get<any>(`assets/data/${espaceId}.json`).subscribe({
       next: (data) => {
         this.espaceData = data;
+        
+        // If we have query params waiting to be processed, update displayed cards
+        if (this.selectedSubCategory) {
+          this.updateDisplayedCards();
+          this.updateCurrentPageTitle();
+        }
       },
       error: (error) => {
         console.error(`Error loading data for ${espaceId}:`, error);

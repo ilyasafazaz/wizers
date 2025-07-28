@@ -1,25 +1,28 @@
 <div class="detail-container">
-  <!-- Header with same styling as content-layout -->
+  <!-- Header with same styling and behavior as home-layout -->
   <header class="header-container">
+    <!-- Top Navigation bar - matching home-layout exactly -->
     <app-header-bar-layout
       [mainPages]="mainPages"
       [morePages]="morePages"
-      [currentId]="currentId"
+      [currentId]="selectedHeaderItem"
       [showDropdown]="showDropdown"
       [showMore]="showMore"
       (navClick)="handleNavClick($event)"
-      (toggleMore)="toggleMore($event)"
+      (toggleMore)="showMore = $event"
     ></app-header-bar-layout>
+
+    <!-- Dropdown under active link - matching home-layout exactly -->
     <app-dropdown-layout
       [showDropdown]="showDropdown"
-      [espaceData]="espaceData"
+      [espaceData]="selectedHeaderItem === currentId ? espaceData : espaceData"
       [selectedMenuKey]="selectedMenuKey"
       [selectedMainCategoryId]="selectedMainCategoryId"
       [selectedSubCategory]="selectedSubCategory"
-      [currentEspaceId]="currentId"
-      (menuSelected)="onMenuSelected($event)"
-      (mainCategorySelected)="onMainCategorySelected($event)"
-      (subCategorySelected)="onSubCategorySelected($event)"
+      [currentEspaceId]="selectedHeaderItem || currentId"
+      (menuSelected)="selectMenu($event)"
+      (mainCategorySelected)="selectMainCategory($event)"
+      (subCategorySelected)="selectSubCategory($event)"
       (closeSubDropdown)="closeDropdown()"
     ></app-dropdown-layout>
   </header>
