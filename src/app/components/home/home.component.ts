@@ -37,14 +37,7 @@ export class HomeComponent {
     return icons[index] || 'pi-box';
   }
 
-  navigateTo(blockName: string): void {
-    // Slugify the block name: lowercase, replace spaces and special characters with hyphens
-    const id = blockName
-      .toLowerCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, ''); // remove leading/trailing dashes
-
-    this.router.navigate(['/espace', id]);
+  navigateToEspace(): void {
+    this.router.navigate(['/espace']);
   }
 }

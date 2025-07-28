@@ -7,31 +7,30 @@
 
     <app-search-bar></app-search-bar>
 
-
     <!-- Main Blocks -->
     <div class="categories">
       <div
         class="category-block"
         *ngFor="let block of mainBlocks; let i = index"
-        (click)="navigateTo(block)"
+        (click)="navigateToEspace()"
       >
         <i class="pi" [ngClass]="getIcon(i)"></i>
         <span>{{ block }}</span>
       </div>
 
       <!-- Voir plus block -->
-      <div class="category-block">
+      <!-- <div class="category-block">
         <i class="pi pi-ellipsis-h"></i>
         <button pButton (click)="showMore = !showMore">Voir plus</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- More Blocks -->
     <div class="categories more" *ngIf="showMore">
       <div
         class="category-block"
         *ngFor="let block of moreBlocks"
-        (click)="navigateTo(block)"
+        (click)="navigateToEspace()"
       >
         <i class="pi pi-plus-circle"></i>
         <span>{{ block }}</span>
