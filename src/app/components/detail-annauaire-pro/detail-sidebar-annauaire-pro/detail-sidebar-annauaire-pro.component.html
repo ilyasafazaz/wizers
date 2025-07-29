@@ -1,5 +1,15 @@
 <div class="sidebar" [class.expanded]="isExpanded">
   <div class="sidebar-content">
+    <!-- Toggle button at the top -->
+    <div class="sidebar-toggle">
+      <button 
+        class="toggle-btn"
+        (click)="toggleSidebar()"
+        [title]="isExpanded ? 'Réduire la barre latérale' : 'Étendre la barre latérale'">
+        <i class="pi" [class.pi-angle-left]="isExpanded" [class.pi-angle-right]="!isExpanded"></i>
+      </button>
+    </div>
+
     <!-- Information section -->
     <div class="sidebar-section">
       <h4 class="section-title" *ngIf="isExpanded">Informations</h4>
