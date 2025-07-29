@@ -8,16 +8,6 @@
         <img [src]="currentImage" [alt]="currentCard.name" class="hero-image">
       </div>
 
-      <!-- Navigation arrows (only show if more than 1 slide) -->
-<!--      <div class="slide-nav" *ngIf="currentSlides.length > 1">-->
-<!--        <button class="nav-btn prev-btn" (click)="prevSlide()" type="button">-->
-<!--          <i class="pi pi-chevron-left"></i>-->
-<!--        </button>-->
-<!--        <button class="nav-btn next-btn" (click)="nextSlide()" type="button">-->
-<!--          <i class="pi pi-chevron-right"></i>-->
-<!--        </button>-->
-<!--      </div>-->
-
       <!-- Dot indicators in bottom right (only show if more than 1 slide) -->
       <div class="dots-container" *ngIf="currentSlides.length > 1">
         <button

@@ -26,44 +26,6 @@
         }
       }
 
-      // Navigation arrows
-      .slide-nav {
-        .nav-btn {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(255, 255, 255, 0.8);
-          border: none;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          z-index: 2;
-
-          &:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-50%) scale(1.1);
-          }
-
-          i {
-            font-size: 14px;
-            color: #333;
-          }
-
-          &.prev-btn {
-            left: 20px;
-          }
-
-          &.next-btn {
-            right: 20px;
-          }
-        }
-      }
-
       // Dot indicators
       .dots-container {
         position: absolute;
@@ -203,23 +165,6 @@
       height: 210px;
 
       .slideshow-container {
-        .slide-nav .nav-btn {
-          width: 35px;
-          height: 35px;
-
-          i {
-            font-size: 12px;
-          }
-
-          &.prev-btn {
-            left: 15px;
-          }
-
-          &.next-btn {
-            right: 15px;
-          }
-        }
-
         .dots-container {
           bottom: 15px;
           right: 15px;
@@ -276,23 +221,6 @@
   .detail-header {
     .hero-section {
       .slideshow-container {
-        .slide-nav .nav-btn {
-          width: 30px;
-          height: 30px;
-
-          i {
-            font-size: 10px;
-          }
-
-          &.prev-btn {
-            left: 10px;
-          }
-
-          &.next-btn {
-            right: 10px;
-          }
-        }
-
         .dots-container {
           bottom: 10px;
           right: 10px;
