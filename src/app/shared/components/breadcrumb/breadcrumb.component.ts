@@ -1,4 +1,4 @@
-// breadcrumb.component.ts
+// Updated breadcrumb.component.ts
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
@@ -80,7 +80,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
         label: 'Espace',
         url: '/espace',
         isActive: true,
-        icon: 'pi-th-large' // or any appropriate icon for Espace
+        icon: 'pi-th-large'
       });
     } else if (currentUrl.includes('/espace/')) {
       const urlSegments = currentUrl.split('/');
@@ -119,12 +119,14 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
             });
 
             // Add selected menu item or sidebar item to breadcrumb
+            // FIXED: Show main menu name instead of submenu for menu items
             if (this.selectedMenuItem) {
+              const mainMenuInfo = this.getMainMenuInfo(this.selectedMenuItem);
               this.breadcrumbs.push({
-                label: this.getMenuItemLabel(this.selectedMenuItem),
+                label: mainMenuInfo.label,
                 url: currentUrl,
                 isActive: true,
-                icon: this.getMenuItemIcon(this.selectedMenuItem)
+                icon: mainMenuInfo.icon
               });
             } else if (this.selectedSidebarItem) {
               this.breadcrumbs.push({
@@ -173,33 +175,52 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     return espaceIcons[espaceId] || 'pi-circle';
   }
 
-  getMenuItemLabel(menuItem: string): string {
-    const menuLabels: { [key: string]: string } = {
-      'about': 'À propos',
-      'contact': 'Contact',
-      'faq': 'FAQ',
-      'forum': 'Forum',
-      'reviews': 'Avis'
+  // UPDATED: New method to get main menu info based on submenu selection
+  getMainMenuInfo(menuItem: string): {label: string, icon: string} {
+    // Map submenu items to their main menu
+    const menuMap: { [key: string]: {label: string, icon: string} } = {
+      // Produits submenu items
+      'afficher-produits': { label: 'Produits', icon: 'pi-shopping-cart' },
+      'ajouter-produits': { label: 'Produits', icon: 'pi-shopping-cart' },
+      
+      // Opportunités submenu items
+      'afficher-opportunites': { label: 'Opportunités', icon: 'pi-briefcase' },
+      'ajouter-opportunites': { label: 'Opportunités', icon: 'pi-briefcase' },
+      
+      // Articles submenu items
+      'afficher-articles': { label: 'Articles', icon: 'pi-file-edit' },
+      'ajouter-articles': { label: 'Articles', icon: 'pi-file-edit' },
+      
+      // Fallback for direct menu items (old system)
+      'about': { label: 'À propos', icon: 'pi-info-circle' },
+      'contact': { label: 'Contact', icon: 'pi-phone' },
+      'faq': { label: 'FAQ', icon: 'pi-question-circle' },
+      'forum': { label: 'Forum', icon: 'pi-comments' },
+      'reviews': { label: 'Avis', icon: 'pi-star' }
     };
 
-    return menuLabels[menuItem] || menuItem;
+    return menuMap[menuItem] || { label: menuItem, icon: 'pi-circle' };
+  }
+
+  // Keep old methods for backward compatibility
+  getMenuItemLabel(menuItem: string): string {
+    const mainMenuInfo = this.getMainMenuInfo(menuItem);
+    return mainMenuInfo.label;
   }
 
   getMenuItemIcon(menuItem: string): string {
-    const menuIcons: { [key: string]: string } = {
-      'about': 'pi-info-circle',
-      'contact': 'pi-phone',
-      'faq': 'pi-question-circle',
-      'forum': 'pi-comments',
-      'reviews': 'pi-star'
-    };
-
-    return menuIcons[menuItem] || 'pi-circle';
+    const mainMenuInfo = this.getMainMenuInfo(menuItem);
+    return mainMenuInfo.icon;
   }
 
   getSidebarItemLabel(sidebarItem: string): string {
     const sidebarLabels: { [key: string]: string } = {
-      'map': 'Carte',
+      'about': 'À propos',
+      'contact': 'Contact', 
+      'faq': 'FAQ',
+      'forum': 'Forum',
+      'reviews': 'Avis',
+      'map': 'Localisation',
       'share': 'Partager',
       'print': 'Imprimer',
       'bookmark': 'Favoris'
@@ -210,6 +231,11 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
 
   getSidebarItemIcon(sidebarItem: string): string {
     const sidebarIcons: { [key: string]: string } = {
+      'about': 'pi-info-circle',
+      'contact': 'pi-phone',
+      'faq': 'pi-question-circle', 
+      'forum': 'pi-comments',
+      'reviews': 'pi-star',
       'map': 'pi-map-marker',
       'share': 'pi-share-alt',
       'print': 'pi-print',
@@ -221,7 +247,18 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
 
   navigateTo(url: string): void {
     if (url) {
-      this.router.navigate([url]);
+      // FIXED: When clicking on card name, navigate to about section
+      if (this.currentCard && url === this.router.url) {
+        // If clicking on current card name, show about content
+        this.breadcrumbs.forEach(breadcrumb => breadcrumb.isActive = false);
+        this.breadcrumbs[this.breadcrumbs.length - 1].isActive = true;
+        
+        // Emit event to parent component to show about content
+        // This will be handled by the parent component
+        window.dispatchEvent(new CustomEvent('navigateToAbout'));
+      } else {
+        this.router.navigate([url]);
+      }
     }
   }
 }

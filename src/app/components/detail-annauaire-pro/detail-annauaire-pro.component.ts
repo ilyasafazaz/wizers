@@ -43,7 +43,8 @@ export class DetailAnnauaireProComponent implements OnInit {
 
   // Sidebar properties
   isSidebarExpanded: boolean = false;
-  activeSidebarItem: string | null = null;
+  // FIXED: Default to 'about' instead of null
+  activeSidebarItem: string | null = 'about';
 
   // Dropdown state properties - matching home-layout
   selectedMenuKey: string | null = null;
@@ -52,7 +53,8 @@ export class DetailAnnauaireProComponent implements OnInit {
 
   // Add these new properties for breadcrumb
   selectedMenuItem: string | null = null;
-  selectedSidebarItem: string | null = null;
+  // FIXED: Default to 'about' for sidebar item
+  selectedSidebarItem: string | null = 'about';
 
   constructor(
     private route: ActivatedRoute,
@@ -69,6 +71,26 @@ export class DetailAnnauaireProComponent implements OnInit {
 
     // Load the annuaires data first
     this.loadEspaceData();
+
+    // FIXED: Listen for breadcrumb navigation to about
+    window.addEventListener('navigateToAbout', () => {
+      this.navigateToAbout();
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Clean up event listener
+    window.removeEventListener('navigateToAbout', () => {
+      this.navigateToAbout();
+    });
+  }
+
+  // FIXED: Method to handle navigation to about section
+  navigateToAbout(): void {
+    this.activeSidebarItem = 'about';
+    this.selectedSidebarItem = 'about';
+    this.currentMenuSelection = { menu: '', submenu: '' };
+    this.selectedMenuItem = null;
   }
 
   loadEspaceData(): void {
@@ -195,9 +217,9 @@ export class DetailAnnauaireProComponent implements OnInit {
 
   onSidebarItemChange(item: string): void {
     if (this.activeSidebarItem === item) {
-      // If clicking the same item, deselect it
-      this.activeSidebarItem = null;
-      this.selectedSidebarItem = null;
+      // If clicking the same item, deselect it and go back to about
+      this.activeSidebarItem = 'about';
+      this.selectedSidebarItem = 'about';
     } else {
       // Select new item and clear menu selection
       this.activeSidebarItem = item;
@@ -386,6 +408,7 @@ export class DetailAnnauaireProComponent implements OnInit {
     
     console.log('Menu selection changed:', selection);
   }
+
   // Add method to handle card clicks from the card layouts
   onCardClick(cardId: number): void {
     // Navigate to detail view or handle card selection
