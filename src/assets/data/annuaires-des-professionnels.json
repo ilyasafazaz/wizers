@@ -442,5 +442,143 @@
       "isFavorite": true,
       "description": "Association dédiée au lien social et à l'entraide entre seniors."
     }
+  ],
+  "products": [
+    {
+      "id": 2001,
+      "picture": "assets/cards/cooperative-agricole.jpg",
+      "theme": "Produits Bio",
+      "name": "Légumes Bio de Saison",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@coop-agricole.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "Panier de légumes biologiques de saison, cultivés localement par nos producteurs partenaires."
+    },
+    {
+      "id": 2002,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Services",
+      "name": "Service d'Aide à Domicile",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "contact@aide-domicile.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Service personnalisé d'aide à domicile pour les seniors."
+    },
+    {
+      "id": 2003,
+      "picture": "assets/cards/hotel-senior.jpg",
+      "theme": "Produits Artisanaux",
+      "name": "Pain Artisanal",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "info@boulangerie-locale.fr",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Pain artisanal fait avec des farines locales et biologiques."
+    },
+    {
+      "id": 2004,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Santé",
+      "name": "Consultation Médicale",
+      "telephone": "+33 6 77 88 99 00",
+      "email": "contact@cabinet-medical.fr",
+      "rating": 4,
+      "isFavorite": false,
+      "description": "Consultations médicales généralistes et spécialisées."
+    }
+  ],
+  "opportunities": [
+    {
+      "id": 3001,
+      "picture": "assets/cards/cooperative-agricole.jpg",
+      "theme": "Formation",
+      "name": "Formation Jardinage Bio",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "info@formation-jardinage.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "Apprenez les techniques du jardinage biologique avec nos experts."
+    },
+    {
+      "id": 3002,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Emploi",
+      "name": "Poste d'Aide-Soignant",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "rh@ehpad-soleil.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Rejoignez notre équipe d'aide-soignants dans un environnement bienveillant."
+    },
+    {
+      "id": 3003,
+      "picture": "assets/cards/hotel-senior.jpg",
+      "theme": "Bénévolat",
+      "name": "Bénévolat Association",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "benevoles@vivre-ensemble.org",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Participez à nos actions de solidarité et d'entraide."
+    },
+    {
+      "id": 3004,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Stage",
+      "name": "Stage en Pharmacie",
+      "telephone": "+33 6 77 88 99 00",
+      "email": "stages@pharmacie-centrale.fr",
+      "rating": 4,
+      "isFavorite": false,
+      "description": "Stage d'observation en pharmacie pour étudiants."
+    }
+  ],
+  "articles": [
+    {
+      "id": 4001,
+      "picture": "assets/cards/cooperative-agricole.jpg",
+      "theme": "Santé",
+      "name": "Les Bienfaits du Jardinage",
+      "telephone": "+33 6 00 11 22 33",
+      "email": "redaction@magazine-senior.fr",
+      "rating": 4,
+      "isFavorite": true,
+      "description": "Découvrez comment le jardinage peut améliorer votre bien-être physique et mental."
+    },
+    {
+      "id": 4002,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Lifestyle",
+      "name": "Vieillir Chez Soi",
+      "telephone": "+33 6 44 33 22 11",
+      "email": "info@vivre-senior.fr",
+      "rating": 5,
+      "isFavorite": false,
+      "description": "Conseils pratiques pour aménager son domicile et vieillir en toute sécurité."
+    },
+    {
+      "id": 4003,
+      "picture": "assets/cards/hotel-senior.jpg",
+      "theme": "Alimentation",
+      "name": "Nutrition après 60 ans",
+      "telephone": "+33 6 55 66 77 88",
+      "email": "nutritionniste@sante-senior.fr",
+      "rating": 5,
+      "isFavorite": true,
+      "description": "Guide nutritionnel adapté aux besoins des seniors."
+    },
+    {
+      "id": 4004,
+      "picture": "assets/cards/general1.jpg",
+      "theme": "Technologie",
+      "name": "Internet pour les Seniors",
+      "telephone": "+33 6 77 88 99 00",
+      "email": "formation@cyber-senior.fr",
+      "rating": 4,
+      "isFavorite": false,
+      "description": "Guide pratique pour débuter sur internet en toute sécurité."
+    }
   ]
 }

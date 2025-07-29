@@ -1,48 +1,102 @@
 <div class="nav-element">
   <div class="menu-buttons">
-    <button
-      class="menu-btn"
-      [class.active]="activeMenu === 'about'"
-      (click)="setActiveMenu('about')"
-    >
-      <i class="pi pi-info-circle"></i>
-      <span>À propos</span>
-    </button>
+    <!-- Produits dropdown -->
+    <div class="menu-item" [class.active]="activeMenu === 'produits'">
+      <button
+        class="menu-btn"
+        [class.active]="activeMenu === 'produits'"
+        (click)="toggleMenu('produits')"
+      >
+        <i class="pi pi-shopping-cart"></i>
+        <span>Produits</span>
+        <i class="pi" [class.pi-chevron-down]="activeMenu !== 'produits' || !showDropdown" 
+           [class.pi-chevron-up]="activeMenu === 'produits' && showDropdown"></i>
+      </button>
+      
+      <div class="dropdown-menu" *ngIf="activeMenu === 'produits' && showDropdown">
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'afficher-produits'"
+          (click)="selectSubmenu('afficher-produits')"
+        >
+          <i class="pi pi-eye"></i>
+          <span>Afficher produits</span>
+        </button>
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'ajouter-produits'"
+          (click)="selectSubmenu('ajouter-produits')"
+        >
+          <i class="pi pi-plus"></i>
+          <span>Ajouter produits</span>
+        </button>
+      </div>
+    </div>
 
-    <button
-      class="menu-btn"
-      [class.active]="activeMenu === 'faq'"
-      (click)="setActiveMenu('faq')"
-    >
-      <i class="pi pi-question-circle"></i>
-      <span>FAQ</span>
-    </button>
+    <!-- Opportunités dropdown -->
+    <div class="menu-item" [class.active]="activeMenu === 'opportunites'">
+      <button
+        class="menu-btn"
+        [class.active]="activeMenu === 'opportunites'"
+        (click)="toggleMenu('opportunites')"
+      >
+        <i class="pi pi-briefcase"></i>
+        <span>Opportunités</span>
+        <i class="pi" [class.pi-chevron-down]="activeMenu !== 'opportunites' || !showDropdown" 
+           [class.pi-chevron-up]="activeMenu === 'opportunites' && showDropdown"></i>
+      </button>
+      
+      <div class="dropdown-menu" *ngIf="activeMenu === 'opportunites' && showDropdown">
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'afficher-opportunites'"
+          (click)="selectSubmenu('afficher-opportunites')"
+        >
+          <i class="pi pi-eye"></i>
+          <span>Afficher opportunités</span>
+        </button>
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'ajouter-opportunites'"
+          (click)="selectSubmenu('ajouter-opportunites')"
+        >
+          <i class="pi pi-plus"></i>
+          <span>Ajouter opportunités</span>
+        </button>
+      </div>
+    </div>
 
-    <button
-      class="menu-btn"
-      [class.active]="activeMenu === 'forum'"
-      (click)="setActiveMenu('forum')"
-    >
-      <i class="pi pi-comments"></i>
-      <span>Forum</span>
-    </button>
-
-    <button
-      class="menu-btn"
-      [class.active]="activeMenu === 'reviews'"
-      (click)="setActiveMenu('reviews')"
-    >
-      <i class="pi pi-star"></i>
-      <span>Avis</span>
-    </button>
-
-    <button
-      class="menu-btn"
-      [class.active]="activeMenu === 'contact'"
-      (click)="setActiveMenu('contact')"
-    >
-      <i class="pi pi-phone"></i>
-      <span>Contact</span>
-    </button>
+    <!-- Articles dropdown -->
+    <div class="menu-item" [class.active]="activeMenu === 'articles'">
+      <button
+        class="menu-btn"
+        [class.active]="activeMenu === 'articles'"
+        (click)="toggleMenu('articles')"
+      >
+        <i class="pi pi-file-edit"></i>
+        <span>Articles</span>
+        <i class="pi" [class.pi-chevron-down]="activeMenu !== 'articles' || !showDropdown" 
+           [class.pi-chevron-up]="activeMenu === 'articles' && showDropdown"></i>
+      </button>
+      
+      <div class="dropdown-menu" *ngIf="activeMenu === 'articles' && showDropdown">
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'afficher-articles'"
+          (click)="selectSubmenu('afficher-articles')"
+        >
+          <i class="pi pi-eye"></i>
+          <span>Afficher articles</span>
+        </button>
+        <button 
+          class="dropdown-item"
+          [class.active]="selectedSubmenu === 'ajouter-articles'"
+          (click)="selectSubmenu('ajouter-articles')"
+        >
+          <i class="pi pi-plus"></i>
+          <span>Ajouter articles</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DataService, PageLink } from '../../services/data.service';
+import { MenuSelection } from './detail-menu-annauaire-pro/detail-menu-annauaire-pro.component';
 
 export interface Card {
   id: number;
@@ -30,6 +31,12 @@ export class DetailAnnauaireProComponent implements OnInit {
   espaceData: any = null;
   currentCard: Card | null = null;
   activeMenu: string = 'about';
+  // New menu system properties
+  currentMenuSelection: MenuSelection = { menu: '', submenu: '' };
+  // Data arrays for cards
+  productsData: Card[] = [];
+  opportunitiesData: Card[] = [];
+  articlesData: Card[] = [];
 
   // Current selected header item (for dropdown display only)
   selectedHeaderItem: string = '';
@@ -69,6 +76,10 @@ export class DetailAnnauaireProComponent implements OnInit {
       next: (data) => {
         this.espaceData = data;
         console.log('Loaded annuaires data:', data);
+          // Load the card data arrays
+          this.productsData = data.products || [];
+          this.opportunitiesData = data.opportunities || [];
+          this.articlesData = data.articles || [];
 
         // Try to get card ID from different sources
         this.route.params.subscribe(params => {
@@ -191,7 +202,7 @@ export class DetailAnnauaireProComponent implements OnInit {
       // Select new item and clear menu selection
       this.activeSidebarItem = item;
       this.selectedSidebarItem = item;
-      this.activeMenu = '';
+      this.currentMenuSelection = { menu: '', submenu: '' };
       this.selectedMenuItem = null;
     }
   }
@@ -360,5 +371,24 @@ export class DetailAnnauaireProComponent implements OnInit {
 
   toggleMore(showMore: boolean): void {
     this.showMore = showMore;
+  }
+  
+  // New method to handle menu changes
+  onMenuChange(selection: MenuSelection): void {
+    this.currentMenuSelection = selection;
+    this.selectedMenuItem = selection.submenu; // Set for breadcrumb
+    
+    // Clear sidebar selection when menu is selected
+    if (selection.submenu) {
+      this.activeSidebarItem = null;
+      this.selectedSidebarItem = null;
+    }
+    
+    console.log('Menu selection changed:', selection);
+  }
+  // Add method to handle card clicks from the card layouts
+  onCardClick(cardId: number): void {
+    // Navigate to detail view or handle card selection
+    this.router.navigate(['/detail', this.currentId, cardId]);
   }
 }

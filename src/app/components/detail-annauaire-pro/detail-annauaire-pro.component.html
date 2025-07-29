@@ -1,32 +1,4 @@
 <div class="detail-container">
-  <!-- Header with same styling and behavior as home-layout -->
-  <header class="header-container">
-    <!-- Top Navigation bar - matching home-layout exactly -->
-    <app-header-bar-layout
-      [mainPages]="mainPages"
-      [morePages]="morePages"
-      [currentId]="selectedHeaderItem"
-      [showDropdown]="showDropdown"
-      [showMore]="showMore"
-      (navClick)="handleNavClick($event)"
-      (toggleMore)="showMore = $event"
-    ></app-header-bar-layout>
-
-    <!-- Dropdown under active link - matching home-layout exactly -->
-    <app-dropdown-layout
-      [showDropdown]="showDropdown"
-      [espaceData]="selectedHeaderItem === currentId ? espaceData : espaceData"
-      [selectedMenuKey]="selectedMenuKey"
-      [selectedMainCategoryId]="selectedMainCategoryId"
-      [selectedSubCategory]="selectedSubCategory"
-      [currentEspaceId]="selectedHeaderItem || currentId"
-      (menuSelected)="selectMenu($event)"
-      (mainCategorySelected)="selectMainCategory($event)"
-      (subCategorySelected)="selectSubCategory($event)"
-      (closeSubDropdown)="closeDropdown()"
-    ></app-dropdown-layout>
-  </header>
-
   <!-- Detail content -->
   <main class="main-content">
     <div class="detail-content">
@@ -35,8 +7,9 @@
       <div class="content" *ngIf="currentCard">
         <div class="content-wrapper">
           <div class="main-content-area">
+            <!-- Updated menu component -->
             <app-detail-menu-annauaire-pro
-              (menuChange)="setActiveMenu($event)">
+              (menuChange)="onMenuChange($event)">
             </app-detail-menu-annauaire-pro>
 
             <!-- Extend/Collapse Sidebar Button -->
@@ -56,15 +29,71 @@
               [selectedSidebarItem]="selectedSidebarItem">
             </app-breadcrumb>
 
-            <!-- Dynamic content based on active menu (only show if no sidebar item is active) -->
-            <div class="content-section" *ngIf="activeMenu === 'about' && !activeSidebarItem">
+            <!-- Content sections for products, opportunities, articles -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-produits'">
+              <h3>Produits disponibles</h3>
+              <app-card-layout 
+                [cards]="productsData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-opportunites'">
+              <h3>Opportunités disponibles</h3>
+              <app-card-layout 
+                [cards]="opportunitiesData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-articles'">
+              <h3>Articles disponibles</h3>
+              <app-card-layout 
+                [cards]="articlesData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <!-- Placeholder for add forms -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-produits'">
+              <h3>Ajouter un produit</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout de produit sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-opportunites'">
+              <h3>Ajouter une opportunité</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout d'opportunité sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-articles'">
+              <h3>Ajouter un article</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout d'article sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <!-- Sidebar content sections -->
+            <div class="content-section" data-section="about" *ngIf="activeSidebarItem === 'about'">
               <h3>À propos de {{ currentCard.name }}</h3>
               <div class="description">
                 <p>{{ currentCard.description || getDefaultDescription() }}</p>
               </div>
             </div>
 
-            <div class="content-section" *ngIf="activeMenu === 'contact' && !activeSidebarItem">
+            <div class="content-section" data-section="contact" *ngIf="activeSidebarItem === 'contact'">
               <h3>Informations de contact</h3>
               <div class="contact-details">
                 <div class="contact-card">
@@ -85,7 +114,7 @@
               </div>
             </div>
 
-            <div class="content-section" *ngIf="activeMenu === 'faq' && !activeSidebarItem">
+            <div class="content-section" data-section="faq" *ngIf="activeSidebarItem === 'faq'">
               <h3>Questions fréquentes</h3>
               <div class="faq-list">
                 <div class="faq-item">
@@ -105,7 +134,7 @@
               </div>
             </div>
 
-            <div class="content-section" *ngIf="activeMenu === 'forum' && !activeSidebarItem">
+            <div class="content-section" data-section="forum" *ngIf="activeSidebarItem === 'forum'">
               <h3>Forum de discussion</h3>
               <div class="forum-placeholder">
                 <div class="forum-message">
@@ -115,7 +144,7 @@
               </div>
             </div>
 
-            <div class="content-section" *ngIf="activeMenu === 'reviews' && !activeSidebarItem">
+            <div class="content-section" data-section="reviews" *ngIf="activeSidebarItem === 'reviews'">
               <h3>Avis clients</h3>
               <div class="reviews-placeholder">
                 <div class="review-summary">
@@ -139,8 +168,7 @@
               </div>
             </div>
 
-            <!-- Dynamic content based on active sidebar item (only show if sidebar item is active) -->
-            <div class="content-section" *ngIf="activeSidebarItem === 'map'">
+            <div class="content-section" data-section="map" *ngIf="activeSidebarItem === 'map'">
               <h3>Localisation de {{ currentCard.name }}</h3>
               <div class="map-container">
                 <div class="map-placeholder">
@@ -155,7 +183,7 @@
               </div>
             </div>
 
-            <div class="content-section" *ngIf="activeSidebarItem === 'share'">
+            <div class="content-section" data-section="share" *ngIf="activeSidebarItem === 'share'">
               <h3>Partager {{ currentCard.name }}</h3>
               <div class="share-container">
                 <div class="share-options">
@@ -197,11 +225,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- Default content when no menu is selected -->
+            <div class="content-section" *ngIf="!currentMenuSelection.submenu && !activeSidebarItem">
+              <h3>Bienvenue</h3>
+              <div class="welcome-message">
+                <i class="pi pi-info-circle"></i>
+                <p>Sélectionnez une option dans le menu ci-dessus ou utilisez la barre latérale pour plus d'informations.</p>
+              </div>
+            </div>
           </div>
 
+          <!-- Updated sidebar with old menu items -->
           <app-detail-sidebar-annauaire-pro
             [isExpanded]="isSidebarExpanded"
             [activeSidebarItem]="activeSidebarItem"
+            [currentCard]="currentCard"
             (sidebarItemChange)="onSidebarItemChange($event)">
           </app-detail-sidebar-annauaire-pro>
         </div>

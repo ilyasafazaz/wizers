@@ -1,21 +1,81 @@
 <div class="sidebar" [class.expanded]="isExpanded">
-  <div class="sidebar-items">
-    <div
-      class="sidebar-item"
-      [class.active]="activeSidebarItem === 'map'"
-      (click)="onSidebarItemClick('map')"
-      title="Carte">
-      <i class="pi pi-map-marker"></i>
-      <span class="item-label" *ngIf="isExpanded">Carte</span>
+  <div class="sidebar-content">
+    <!-- Information section -->
+    <div class="sidebar-section">
+      <h4 class="section-title" *ngIf="isExpanded">Informations</h4>
+      
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'about'"
+        (click)="selectItem('about')"
+        [title]="!isExpanded ? 'À propos' : ''">
+        <i class="pi pi-info-circle"></i>
+        <span *ngIf="isExpanded">À propos</span>
+      </button>
+
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'contact'"
+        (click)="selectItem('contact')"
+        [title]="!isExpanded ? 'Contact' : ''">
+        <i class="pi pi-phone"></i>
+        <span *ngIf="isExpanded">Contact</span>
+      </button>
+
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'faq'"
+        (click)="selectItem('faq')"
+        [title]="!isExpanded ? 'FAQ' : ''">
+        <i class="pi pi-question-circle"></i>
+        <span *ngIf="isExpanded">FAQ</span>
+      </button>
     </div>
 
-    <div
-      class="sidebar-item"
-      [class.active]="activeSidebarItem === 'share'"
-      (click)="onSidebarItemClick('share')"
-      title="Partager">
-      <i class="pi pi-share-alt"></i>
-      <span class="item-label" *ngIf="isExpanded">Partager</span>
+    <!-- Community section -->
+    <div class="sidebar-section">
+      <h4 class="section-title" *ngIf="isExpanded">Communauté</h4>
+      
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'forum'"
+        (click)="selectItem('forum')"
+        [title]="!isExpanded ? 'Forum' : ''">
+        <i class="pi pi-comments"></i>
+        <span *ngIf="isExpanded">Forum</span>
+      </button>
+
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'reviews'"
+        (click)="selectItem('reviews')"
+        [title]="!isExpanded ? 'Avis' : ''">
+        <i class="pi pi-star"></i>
+        <span *ngIf="isExpanded">Avis</span>
+      </button>
+    </div>
+
+    <!-- Actions section -->
+    <div class="sidebar-section">
+      <h4 class="section-title" *ngIf="isExpanded">Actions</h4>
+      
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'map'"
+        (click)="selectItem('map')"
+        [title]="!isExpanded ? 'Localisation' : ''">
+        <i class="pi pi-map-marker"></i>
+        <span *ngIf="isExpanded">Localisation</span>
+      </button>
+
+      <button 
+        class="sidebar-item"
+        [class.active]="activeSidebarItem === 'share'"
+        (click)="selectItem('share')"
+        [title]="!isExpanded ? 'Partager' : ''">
+        <i class="pi pi-share-alt"></i>
+        <span *ngIf="isExpanded">Partager</span>
+      </button>
     </div>
   </div>
 </div>
