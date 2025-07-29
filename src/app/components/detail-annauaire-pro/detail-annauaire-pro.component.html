@@ -12,16 +12,6 @@
               (menuChange)="onMenuChange($event)">
             </app-detail-menu-annauaire-pro>
 
-            <!-- Extend/Collapse Sidebar Button -->
-            <div class="sidebar-toggle">
-              <button
-                class="toggle-btn"
-                (click)="toggleSidebar()"
-                [title]="isSidebarExpanded ? 'Réduire la barre latérale' : 'Étendre la barre latérale'">
-                <i class="pi" [class.pi-angle-left]="isSidebarExpanded" [class.pi-angle-right]="!isSidebarExpanded"></i>
-              </button>
-            </div>
-
             <!-- Pass currentCard to breadcrumb component -->
             <app-breadcrumb
               [currentCard]="currentCard"
@@ -225,23 +215,15 @@
                 </div>
               </div>
             </div>
-
-            <!-- Default content when no menu is selected -->
-            <!-- <div class="content-section" *ngIf="!currentMenuSelection.submenu && !activeSidebarItem">
-              <h3>Bienvenue</h3>
-              <div class="welcome-message">
-                <i class="pi pi-info-circle"></i>
-                <p>Sélectionnez une option dans le menu ci-dessus ou utilisez la barre latérale pour plus d'informations.</p>
-              </div>
-            </div> -->
           </div>
 
-          <!-- Updated sidebar with old menu items -->
+          <!-- Updated sidebar with toggle button inside -->
           <app-detail-sidebar-annauaire-pro
             [isExpanded]="isSidebarExpanded"
             [activeSidebarItem]="activeSidebarItem"
             [currentCard]="currentCard"
-            (sidebarItemChange)="onSidebarItemChange($event)">
+            (sidebarItemChange)="onSidebarItemChange($event)"
+            (toggleSidebarEvent)="toggleSidebar()">
           </app-detail-sidebar-annauaire-pro>
         </div>
       </div>

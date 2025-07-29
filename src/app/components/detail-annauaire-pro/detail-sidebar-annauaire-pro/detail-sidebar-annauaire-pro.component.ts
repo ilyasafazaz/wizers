@@ -23,8 +23,13 @@ export class DetailSidebarAnnauaireProComponent {
   @Input() activeSidebarItem: string | null = null;
   @Input() currentCard: Card | null = null;
   @Output() sidebarItemChange = new EventEmitter<string>();
+  @Output() toggleSidebarEvent = new EventEmitter<void>(); // New output for toggle
 
   selectItem(item: string): void {
     this.sidebarItemChange.emit(item);
+  }
+
+  toggleSidebar(): void {
+    this.toggleSidebarEvent.emit();
   }
 }
