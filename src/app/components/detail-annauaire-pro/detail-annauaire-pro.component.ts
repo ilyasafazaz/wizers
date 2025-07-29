@@ -397,16 +397,19 @@ export class DetailAnnauaireProComponent implements OnInit {
   
   // New method to handle menu changes
   onMenuChange(selection: MenuSelection): void {
-    this.currentMenuSelection = selection;
-    this.selectedMenuItem = selection.submenu; // Set for breadcrumb
-    
-    // Clear sidebar selection when menu is selected
+    // Only update if there's actually a submenu selected
     if (selection.submenu) {
+      this.currentMenuSelection = selection;
+      this.selectedMenuItem = selection.submenu; // Set for breadcrumb
+      
+      // Clear sidebar selection when menu is selected
       this.activeSidebarItem = null;
       this.selectedSidebarItem = null;
+      
+      console.log('Menu selection changed:', selection);
     }
-    
-    console.log('Menu selection changed:', selection);
+    // If no submenu is provided, don't change the current state
+    // This prevents the "Bienvenue" message from showing when just switching between menu headers
   }
 
   // Add method to handle card clicks from the card layouts

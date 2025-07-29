@@ -21,30 +21,32 @@ export class DetailMenuAnnauaireProComponent {
     if (this.activeMenu === menu) {
       // If clicking the same menu, toggle dropdown
       this.showDropdown = !this.showDropdown;
-      if (!this.showDropdown) {
-        this.activeMenu = '';
-        this.selectedSubmenu = '';
-        this.emitChange();
-      }
+      // Don't reset the menu or emit changes when just toggling dropdown
+      // The content should remain the same if there's a selected submenu
     } else {
       // If clicking different menu, switch to it and show dropdown
       this.activeMenu = menu;
       this.showDropdown = true;
-      this.selectedSubmenu = '';
-      this.emitChange();
+      // Don't clear selectedSubmenu or emit changes when just switching menus
+      // Only emit changes when actually selecting a submenu
     }
   }
 
   selectSubmenu(submenu: string): void {
     this.selectedSubmenu = submenu;
     this.showDropdown = false;
+    
+    // Only emit the change when a submenu is actually selected
     this.emitChange();
   }
 
   private emitChange(): void {
-    this.menuChange.emit({
-      menu: this.activeMenu,
-      submenu: this.selectedSubmenu
-    });
+    // Only emit if we have a valid submenu selection
+    if (this.selectedSubmenu) {
+      this.menuChange.emit({
+        menu: this.activeMenu,
+        submenu: this.selectedSubmenu
+      });
+    }
   }
 }
