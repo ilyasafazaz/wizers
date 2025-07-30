@@ -1,5 +1,4 @@
-
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Card } from '../detail-annauaire-pro.component';
 
 @Component({
@@ -7,14 +6,21 @@ import { Card } from '../detail-annauaire-pro.component';
   templateUrl: './detail-header-annauaire-pro.component.html',
   styleUrls: ['./detail-header-annauaire-pro.component.scss']
 })
-export class DetailHeaderAnnauaireProComponent implements OnInit, OnDestroy {
+export class DetailHeaderAnnauaireProComponent implements OnInit, OnDestroy, OnChanges {
   @Input() currentCard: Card | null = null;
 
   currentSlideIndex: number = 0;
   autoSlideInterval?: any;
 
   ngOnInit() {
-    this.startAutoSlide();
+    this.initializeSlideshow();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Restart slideshow when currentCard changes
+    if (changes['currentCard'] && !changes['currentCard'].firstChange) {
+      this.initializeSlideshow();
+    }
   }
 
   ngOnDestroy() {
@@ -27,6 +33,17 @@ export class DetailHeaderAnnauaireProComponent implements OnInit, OnDestroy {
 
   get currentImage(): string {
     return this.currentSlides[this.currentSlideIndex] || '';
+  }
+
+  private initializeSlideshow(): void {
+    // Reset slide index
+    this.currentSlideIndex = 0;
+    
+    // Stop any existing interval
+    this.stopAutoSlide();
+    
+    // Start new slideshow if there are multiple slides
+    this.startAutoSlide();
   }
 
   goToSlide(index: number): void {
@@ -47,16 +64,18 @@ export class DetailHeaderAnnauaireProComponent implements OnInit, OnDestroy {
   }
 
   startAutoSlide(): void {
+    // Only start auto-slide if there are multiple slides
     if (this.currentSlides.length > 1) {
       this.autoSlideInterval = setInterval(() => {
         this.nextSlide();
-      }, 5000); // Change slide every 5 seconds
+      }, 4000); // Change slide every 4 seconds
     }
   }
 
   stopAutoSlide(): void {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = undefined;
     }
   }
 
