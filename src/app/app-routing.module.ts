@@ -13,7 +13,7 @@ const routes: Routes = [
   // { path: 'espace/:espaceName/detail/:id', component: DetailAnnauaireProComponent},
   { path: 'espace', component: HomeLayoutComponent},
   { path: 'espace/annuaires-des-professionnels/detail/:id', component: DetailAnnauaireProComponent},
-  // { path: 'espace/offres-et-opportunites/detail/:id', component: DetailOffrePromoComponent},
+  { path: 'espace/offres-et-opportunites/detail/:id', component: DetailOffrePromoComponent},
   // add more specific routes as needed
 ];
 

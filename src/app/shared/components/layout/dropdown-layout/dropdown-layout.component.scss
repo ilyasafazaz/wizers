@@ -275,6 +275,23 @@
           margin-bottom: 0.4rem !important;
           line-height: 1.2 !important;
         }
+
+        // Make price tags much smaller specifically in dropdown promo-cards
+        .card-price {
+          bottom: 0.3rem !important;
+          right: 0.3rem !important;
+          padding: 0.2rem 0.4rem !important;
+          font-size: 0.75rem !important;
+          border-radius: 10px !important;
+
+          i {
+            font-size: 0.75rem !important;
+          }
+
+          .price-text {
+            font-size: 0.75rem !important;
+          }
+        }
       }
     }
 

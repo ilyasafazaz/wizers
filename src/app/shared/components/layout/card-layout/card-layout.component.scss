@@ -38,6 +38,7 @@
 
   .card-content {
     padding: 1rem; // reduced from 1.5rem
+    position: relative; // Add position relative for price positioning
 
     .card-header {
       display: flex;
@@ -110,6 +111,39 @@
         }
       }
     }
+
+    // New price styling for Offres et Opportunités
+    .card-price {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      // background: linear-gradient(135deg, #c1cf00, #ffc400);
+      background-color: #FFAA33;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+      transition: all 0.3s ease;
+
+      i {
+        font-size: 0.9rem;
+        color: white;
+      }
+
+      .price-text {
+        white-space: nowrap;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+      }
+    }
   }
 }
 
@@ -136,6 +170,18 @@
       .card-header {
         .espace i {
           font-size: 0.9rem;
+        }
+      }
+
+      // Adjust price position for mobile
+      .card-price {
+        bottom: 0.7rem;
+        right: 0.7rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+
+        i {
+          font-size: 0.8rem;
         }
       }
     }
@@ -179,6 +225,18 @@
       margin-bottom: 0.4rem !important; // Reduced margin
       line-height: 1.2 !important;
     }
+
+    // Adjust price for dropdown cards
+    .card-price {
+      bottom: 0.5rem !important;
+      right: 0.5rem !important;
+      padding: 0.2rem 0.5rem !important;
+      font-size: 0.7rem !important;
+
+      i {
+        font-size: 0.7rem !important;
+      }
+    }
   }
 }
 
@@ -212,6 +270,18 @@
       font-size: 0.8rem !important; // Smaller text
       margin-bottom: 0.4rem !important; // Reduced margin
       line-height: 1.2 !important;
+    }
+
+    // Adjust price for dropdown cards
+    .card-price {
+      bottom: 0.5rem !important;
+      right: 0.5rem !important;
+      padding: 0.2rem 0.5rem !important;
+      font-size: 0.7rem !important;
+
+      i {
+        font-size: 0.7rem !important;
+      }
     }
   }
 }

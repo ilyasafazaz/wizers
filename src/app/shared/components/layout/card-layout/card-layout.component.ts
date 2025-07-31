@@ -1,3 +1,4 @@
+// card-layout.component.ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../../../services/data.service';
 
@@ -12,6 +13,7 @@ export interface Card {
   rating: number; // 1-5 stars
   isFavorite: boolean;
   espace?: string; // Add espace identifier
+  price?: string; // New optional price attribute for Offres et Opportunités
 }
 
 @Component({
@@ -56,5 +58,10 @@ export class CardLayoutComponent {
 
   getEspaceIcon(espaceId: string): string {
     return this.espaceIcons[espaceId] || 'pi-question-circle';
+  }
+
+  // Method to check if current espace should show price
+  shouldShowPrice(): boolean {
+    return this.currentEspaceId === 'offres-et-opportunites';
   }
 }

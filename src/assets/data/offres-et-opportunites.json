@@ -28,7 +28,8 @@
             "telephone": "+33 6 12 34 56 78",
             "email": "contact@silvershop.fr",
             "rating": 4,
-            "isFavorite": false
+            "isFavorite": false,
+            "price": "29.99 €"
           }
         ],
         "subCategoryCards": {
@@ -41,7 +42,8 @@
               "telephone": "+33 6 11 22 33 44",
               "email": "contact@aidestechniques.fr",
               "rating": 5,
-              "isFavorite": true
+              "isFavorite": true,
+              "price": "45.00 €"
             }
           ]
         }
@@ -66,9 +68,39 @@
             "telephone": "+33 6 22 33 44 55",
             "email": "info@adaptsenior.fr",
             "rating": 4,
-            "isFavorite": false
+            "isFavorite": false,
+            "price": "199.99 €"
           }
         ]
+      }
+    ],
+    "Catalogues des Services":[
+      {
+        "id": 1,
+        "main_category": "Services pour Seniors",
+        "sub_categories": [
+          "Aide à domicile"
+        ],
+        "subCategoryCards": {
+          "Aide à domicile": [
+            {
+              "id": 1111,
+              "picture": "assets/cards/service-camera-de-surveillance.jpg",
+              "slides": [
+                "assets/slides/service1.jpg",
+                "assets/slides/service2.jpg",
+                "assets/slides/service3.jpg"
+              ],
+              "theme": "Aide à domicile",
+              "name": "Installation de caméras de surveillance à domicile",
+              "price": "149 €/h",
+              "telephone": "+33 6 11 22 33 44",
+              "email": "contact@aidestechniques.fr",
+              "rating": 5,
+              "isFavorite": true
+            }
+          ]
+        }
       }
     ]
   },
@@ -81,7 +113,8 @@
       "telephone": "+33 6 00 11 22 33",
       "email": "info@retraite-active.fr",
       "rating": 4,
-      "isFavorite": true
+      "isFavorite": true,
+      "price": "89.50 €"
     }
   ]
 }
