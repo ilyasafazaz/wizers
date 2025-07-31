@@ -6,11 +6,11 @@ export interface MenuSelection {
 }
 
 @Component({
-  selector: 'app-detail-menu-annauaire-pro',
-  templateUrl: './detail-menu-annauaire-pro.component.html',
-  styleUrls: ['./detail-menu-annauaire-pro.component.scss']
+  selector: 'app-detail-menu-layout',
+  templateUrl: './detail-menu-layout.component.html',
+  styleUrls: ['./detail-menu-layout.component.scss']
 })
-export class DetailMenuAnnauaireProComponent {
+export class DetailMenuLayoutComponent {
   activeMenu: string = '';
   selectedSubmenu: string = '';
   showDropdown: boolean = false;

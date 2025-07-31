@@ -2,15 +2,15 @@
   <!-- Detail content -->
   <main class="main-content">
     <div class="detail-content">
-      <app-detail-header-annauaire-pro [currentCard]="currentCard"></app-detail-header-annauaire-pro>
+      <app-detail-header-layout [currentCard]="currentCard"></app-detail-header-layout>
 
       <div class="content" *ngIf="currentCard">
         <div class="content-wrapper">
           <div class="main-content-area">
             <!-- Updated menu component -->
-            <app-detail-menu-annauaire-pro
+            <app-detail-menu-layout
               (menuChange)="onMenuChange($event)">
-            </app-detail-menu-annauaire-pro>
+            </app-detail-menu-layout>
 
             <!-- Pass currentCard to breadcrumb component -->
             <app-breadcrumb
@@ -218,13 +218,13 @@
           </div>
 
           <!-- Updated sidebar with toggle button inside -->
-          <app-detail-sidebar-annauaire-pro
+          <app-detail-sidebar-layout
             [isExpanded]="isSidebarExpanded"
             [activeSidebarItem]="activeSidebarItem"
             [currentCard]="currentCard"
             (sidebarItemChange)="onSidebarItemChange($event)"
             (toggleSidebarEvent)="toggleSidebar()">
-          </app-detail-sidebar-annauaire-pro>
+          </app-detail-sidebar-layout>
         </div>
       </div>
 

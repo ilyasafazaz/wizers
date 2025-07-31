@@ -26,9 +26,9 @@ import { DetailAnnauaireProComponent } from './components/detail-annauaire-pro/d
 import { DetailOffrePromoComponent } from './components/detail-offre-promo/detail-offre-promo.component';
 import {TabMenuModule} from "primeng/tabmenu";
 import { BreadcrumbComponent } from './shared/components/breadcrumb/breadcrumb.component';
-import { DetailHeaderAnnauaireProComponent } from './components/detail-annauaire-pro/detail-header-annauaire-pro/detail-header-annauaire-pro.component';
-import { DetailMenuAnnauaireProComponent } from './components/detail-annauaire-pro/detail-menu-annauaire-pro/detail-menu-annauaire-pro.component';
-import { DetailSidebarAnnauaireProComponent } from './components/detail-annauaire-pro/detail-sidebar-annauaire-pro/detail-sidebar-annauaire-pro.component';
+import { DetailHeaderLayoutComponent } from './components/detail-layout/detail-header-layout/detail-header-layout.component';
+import { DetailMenuLayoutComponent } from './components/detail-layout/detail-menu-layout/detail-menu-layout.component';
+import { DetailSidebarLayoutComponent } from './components/detail-layout/detail-sidebar-layout/detail-sidebar-layout.component';
 import { HomeLayoutComponent } from './shared/components/layout/home-layout/home-layout.component';
 import { FilterSidebarComponent } from './shared/components/layout/filter-sidebar/filter-sidebar.component';
 
@@ -45,9 +45,9 @@ import { FilterSidebarComponent } from './shared/components/layout/filter-sideba
     DetailAnnauaireProComponent,
     DetailOffrePromoComponent,
     BreadcrumbComponent,
-    DetailHeaderAnnauaireProComponent,
-    DetailMenuAnnauaireProComponent,
-    DetailSidebarAnnauaireProComponent,
+    DetailHeaderLayoutComponent,
+    DetailMenuLayoutComponent,
+    DetailSidebarLayoutComponent,
     HomeLayoutComponent,
     FilterSidebarComponent,
 

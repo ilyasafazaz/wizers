@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DataService, PageLink } from '../../services/data.service';
-import { MenuSelection } from './detail-menu-annauaire-pro/detail-menu-annauaire-pro.component';
+import { MenuSelection } from '../detail-layout/detail-menu-layout/detail-menu-layout.component';
 
 export interface Card {
   id: number;

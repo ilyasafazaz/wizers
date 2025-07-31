@@ -14,11 +14,11 @@ export interface Card {
 }
 
 @Component({
-  selector: 'app-detail-sidebar-annauaire-pro',
-  templateUrl: './detail-sidebar-annauaire-pro.component.html',
-  styleUrls: ['./detail-sidebar-annauaire-pro.component.scss']
+  selector: 'app-detail-sidebar-layout',
+  templateUrl: './detail-sidebar-layout.component.html',
+  styleUrls: ['./detail-sidebar-layout.component.scss']
 })
-export class DetailSidebarAnnauaireProComponent {
+export class DetailSidebarLayoutComponent {
   @Input() isExpanded: boolean = false;
   @Input() activeSidebarItem: string | null = null;
   @Input() currentCard: Card | null = null;
