@@ -1,22 +1,391 @@
 <div class="detail-container">
-  <!-- Header with same styling as content-layout -->
-  <header class="header-container">
-    <app-header-bar-layout
-      [mainPages]="mainPages"
-      [morePages]="morePages"
-      [currentId]="currentId"
-      [showDropdown]="showDropdown"
-      [showMore]="showMore"
-      (navClick)="handleNavClick($event)"
-      (toggleMore)="toggleMore($event)"
-    ></app-header-bar-layout>
-  </header>
-
   <!-- Detail content -->
   <main class="main-content">
     <div class="detail-content">
-      <h2>Détail Annuaire Professionnel</h2>
-      <p>detail-annauaire-pro works!</p>
+      <app-detail-header-layout [currentCard]="currentCard"></app-detail-header-layout>
+
+      <div class="content" *ngIf="currentCard">
+        <div class="content-wrapper">
+          <div class="main-content-area">
+            <!-- Updated menu component for Offres et Opportunités -->
+            <app-detail-menu-layout
+              (menuChange)="onMenuChange($event)">
+            </app-detail-menu-layout>
+
+            <!-- Pass currentCard to breadcrumb component -->
+            <app-breadcrumb
+              [currentCard]="currentCard"
+              [selectedMenuItem]="selectedMenuItem"
+              [selectedSidebarItem]="selectedSidebarItem">
+            </app-breadcrumb>
+
+            <!-- UPDATED: Content sections now use context-specific data -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-produits'">
+              <h3>Produits liés à {{ currentCard.name }}</h3>
+              <div *ngIf="currentCardProducts.length > 0">
+                <app-card-layout 
+                  [cards]="currentCardProducts" 
+                  [currentEspaceId]="currentId"
+                  [hideEspaceAndTheme]="true"
+                  (cardClick)="onCardClick($event)">
+                </app-card-layout>
+              </div>
+              <div *ngIf="currentCardProducts.length === 0" class="no-data-message">
+                <i class="pi pi-info-circle"></i>
+                <p>Aucun produit disponible pour cet élément.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-opportunites'">
+              <h3>Opportunités liées à {{ currentCard.name }}</h3>
+              <div *ngIf="currentCardOpportunities.length > 0">
+                <app-card-layout 
+                  [cards]="currentCardOpportunities" 
+                  [currentEspaceId]="currentId"
+                  [hideEspaceAndTheme]="true"
+                  (cardClick)="onCardClick($event)">
+                </app-card-layout>
+              </div>
+              <div *ngIf="currentCardOpportunities.length === 0" class="no-data-message">
+                <i class="pi pi-info-circle"></i>
+                <p>Aucune opportunité disponible pour cet élément.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-articles'">
+              <h3>Articles liés à {{ currentCard.name }}</h3>
+              <div *ngIf="currentCardArticles.length > 0">
+                <app-card-layout 
+                  [cards]="currentCardArticles" 
+                  [currentEspaceId]="currentId"
+                  [hideEspaceAndTheme]="true"
+                  (cardClick)="onCardClick($event)">
+                </app-card-layout>
+              </div>
+              <div *ngIf="currentCardArticles.length === 0" class="no-data-message">
+                <i class="pi pi-info-circle"></i>
+                <p>Aucun article disponible pour cet élément.</p>
+              </div>
+            </div>
+
+            <!-- NEW: Section for partnerships -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-partenariats'">
+              <h3>Partenariats liés à {{ currentCard.name }}</h3>
+              <div *ngIf="currentCardPartnerships.length > 0">
+                <app-card-layout 
+                  [cards]="currentCardPartnerships" 
+                  [currentEspaceId]="currentId"
+                  [hideEspaceAndTheme]="true"
+                  (cardClick)="onCardClick($event)">
+                </app-card-layout>
+              </div>
+              <div *ngIf="currentCardPartnerships.length === 0" class="no-data-message">
+                <i class="pi pi-info-circle"></i>
+                <p>Aucun partenariat disponible pour cet élément.</p>
+              </div>
+            </div>
+
+            <!-- Keep original sections for backward compatibility -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-e-boutique'">
+              <h3>E-boutique Partenaire</h3>
+              <app-card-layout 
+                [cards]="eBoutiqueData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-services'">
+              <h3>Catalogues des Services</h3>
+              <app-card-layout 
+                [cards]="servicesData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'afficher-e-services'">
+              <h3>Catalogues des E-services</h3>
+              <app-card-layout 
+                [cards]="eServicesData" 
+                [currentEspaceId]="currentId"
+                [hideEspaceAndTheme]="true"
+                (cardClick)="onCardClick($event)">
+              </app-card-layout>
+            </div>
+
+            <!-- Placeholder for add forms -->
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-produits'">
+              <h3>Ajouter un produit lié à {{ currentCard.name }}</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout de produit sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-opportunites'">
+              <h3>Ajouter une opportunité liée à {{ currentCard.name }}</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout d'opportunité sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-articles'">
+              <h3>Ajouter un article lié à {{ currentCard.name }}</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout d'article sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-e-boutique'">
+              <h3>Ajouter un produit E-boutique</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout de produit E-boutique sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-services'">
+              <h3>Ajouter un service au catalogue</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout de service sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <div class="content-section" *ngIf="currentMenuSelection.submenu === 'ajouter-e-services'">
+              <h3>Ajouter un E-service au catalogue</h3>
+              <div class="form-placeholder">
+                <i class="pi pi-plus-circle"></i>
+                <p>Formulaire d'ajout d'E-service sera bientôt disponible.</p>
+              </div>
+            </div>
+
+            <!-- Sidebar content sections -->
+            <div class="content-section" data-section="about" *ngIf="activeSidebarItem === 'about'">
+              <h3>À propos de {{ currentCard.name }}</h3>
+              <div class="description">
+                <p>{{ currentCard.description || getDefaultDescription() }}</p>
+              </div>
+              
+              <!-- Show price prominently for Offres et Opportunités -->
+              <div class="price-info" *ngIf="currentCard.price">
+                <div class="price-card">
+                  <i class="pi pi-tag"></i>
+                  <div>
+                    <h4>Prix</h4>
+                    <p class="price-value">{{ currentCard.price }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- NEW: Show context information -->
+              <!-- <div class="additional-info">
+                <div class="info-card" *ngIf="currentCardProducts.length > 0">
+                  <h4>Produits associés</h4>
+                  <p>{{ currentCardProducts.length }} produit(s) disponible(s)</p>
+                </div>
+
+                <div class="info-card" *ngIf="currentCardOpportunities.length > 0">
+                  <h4>Opportunités associées</h4>
+                  <p>{{ currentCardOpportunities.length }} opportunité(s) disponible(s)</p>
+                </div>
+
+                <div class="info-card" *ngIf="currentCardPartnerships.length > 0">
+                  <h4>Partenariats associés</h4>
+                  <p>{{ currentCardPartnerships.length }} partenariat(s) disponible(s)</p>
+                </div>
+
+                <div class="info-card" *ngIf="currentCardArticles.length > 0">
+                  <h4>Articles associés</h4>
+                  <p>{{ currentCardArticles.length }} article(s) disponible(s)</p>
+                </div>
+              </div> -->
+            </div>
+
+            <div class="content-section" data-section="contact" *ngIf="activeSidebarItem === 'contact'">
+              <h3>Informations de contact</h3>
+              <div class="contact-details">
+                <div class="contact-card">
+                  <i class="pi pi-phone"></i>
+                  <div>
+                    <h4>Téléphone</h4>
+                    <p>{{ currentCard.telephone }}</p>
+                  </div>
+                </div>
+
+                <div class="contact-card">
+                  <i class="pi pi-envelope"></i>
+                  <div>
+                    <h4>Email</h4>
+                    <p>{{ currentCard.email }}</p>
+                  </div>
+                </div>
+
+                <!-- Show price in contact section as well -->
+                <div class="contact-card" *ngIf="currentCard.price">
+                  <i class="pi pi-tag"></i>
+                  <div>
+                    <h4>Prix</h4>
+                    <p class="price-value">{{ currentCard.price }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" data-section="faq" *ngIf="activeSidebarItem === 'faq'">
+              <h3>Questions fréquentes</h3>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <h4>Comment commander chez {{ currentCard.name }} ?</h4>
+                  <p>Vous pouvez nous contacter par téléphone au {{ currentCard.telephone }} ou par email à {{ currentCard.email }} pour passer commande.</p>
+                </div>
+
+                <div class="faq-item">
+                  <h4>Quels sont les délais de livraison ?</h4>
+                  <p>Les délais de livraison varient selon le produit ou service. Contactez-nous pour connaître les délais spécifiques à votre commande.</p>
+                </div>
+
+                <div class="faq-item" *ngIf="currentCard.price">
+                  <h4>Le prix affiché ({{ currentCard.price }}) est-il définitif ?</h4>
+                  <p>Le prix peut varier selon les options choisies et les frais de livraison. N'hésitez pas à nous contacter pour un devis personnalisé.</p>
+                </div>
+
+                <div class="faq-item">
+                  <h4>Proposez-vous des remises pour les seniors ?</h4>
+                  <p>Nous proposons des tarifs préférentiels pour nos clients seniors. Contactez-nous pour en savoir plus sur nos offres spéciales.</p>
+                </div>
+
+                <!-- NEW: Context-specific FAQ items -->
+                <div class="faq-item" *ngIf="currentCardProducts.length > 0">
+                  <h4>Quels produits sont associés à ce service ?</h4>
+                  <p>Nous proposons {{ currentCardProducts.length }} produit(s) complémentaire(s) qui peuvent vous intéresser. Consultez la section "Produits" pour plus d'informations.</p>
+                </div>
+
+                <div class="faq-item" *ngIf="currentCardOpportunities.length > 0">
+                  <h4>Y a-t-il des opportunités spéciales ?</h4>
+                  <p>Oui, nous avons {{ currentCardOpportunities.length }} opportunité(s) spéciale(s) disponible(s). Consultez la section "Opportunités" pour les découvrir.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" data-section="forum" *ngIf="activeSidebarItem === 'forum'">
+              <h3>Forum de discussion</h3>
+              <div class="forum-placeholder">
+                <div class="forum-message">
+                  <i class="pi pi-comments"></i>
+                  <p>Le forum de discussion sera bientôt disponible. Vous pourrez échanger avec d'autres utilisateurs et poser vos questions sur nos produits et services.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" data-section="reviews" *ngIf="activeSidebarItem === 'reviews'">
+              <h3>Avis clients</h3>
+              <div class="reviews-placeholder">
+                <div class="review-summary">
+                  <div class="average-rating">
+                    <span class="rating-number">{{ currentCard.rating }}</span>
+                    <div class="stars">
+                      <i
+                        *ngFor="let star of getStarArray(currentCard.rating)"
+                        class="pi pi-star"
+                        [class.filled]="isStarFilled(star, currentCard.rating)"
+                      ></i>
+                    </div>
+                    <span>sur 5</span>
+                  </div>
+                </div>
+
+                <div class="reviews-message">
+                  <i class="pi pi-star"></i>
+                  <p>Les avis clients seront bientôt disponibles. Vous pourrez consulter et laisser des avis sur nos produits et services.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" data-section="map" *ngIf="activeSidebarItem === 'map'">
+              <h3>Localisation de {{ currentCard.name }}</h3>
+              <div class="map-container">
+                <div class="map-placeholder">
+                  <i class="pi pi-map-marker"></i>
+                  <h4>Carte interactive</h4>
+                  <p>La carte interactive sera bientôt disponible pour localiser {{ currentCard.name }}.</p>
+                  <div class="location-info">
+                    <p><strong>Téléphone:</strong> {{ currentCard.telephone }}</p>
+                    <p><strong>Email:</strong> {{ currentCard.email }}</p>
+                    <p *ngIf="currentCard.price"><strong>Prix:</strong> {{ currentCard.price }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section" data-section="share" *ngIf="activeSidebarItem === 'share'">
+              <h3>Partager {{ currentCard.name }}</h3>
+              <div class="share-container">
+                <div class="share-options">
+                  <h4>Partager sur les réseaux sociaux</h4>
+                  <div class="social-buttons">
+                    <button class="social-btn facebook" (click)="shareOnSocial('facebook')">
+                      <i class="pi pi-facebook"></i>
+                      <span>Facebook</span>
+                    </button>
+                    <button class="social-btn twitter" (click)="shareOnSocial('twitter')">
+                      <i class="pi pi-twitter"></i>
+                      <span>Twitter</span>
+                    </button>
+                    <button class="social-btn linkedin" (click)="shareOnSocial('linkedin')">
+                      <i class="pi pi-linkedin"></i>
+                      <span>LinkedIn</span>
+                    </button>
+                    <button class="social-btn whatsapp" (click)="shareOnSocial('whatsapp')">
+                      <i class="pi pi-whatsapp"></i>
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
+
+                  <div class="share-link">
+                    <h4>Partager le lien</h4>
+                    <div class="link-container">
+                      <input
+                        type="text"
+                        [value]="getShareUrl()"
+                        readonly
+                        #shareInput
+                        class="share-input">
+                      <button class="copy-btn" (click)="copyToClipboard(shareInput)">
+                        <i class="pi pi-copy"></i>
+                        <span>Copier</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated sidebar with toggle button inside -->
+          <app-detail-sidebar-layout
+            [isExpanded]="isSidebarExpanded"
+            [activeSidebarItem]="activeSidebarItem"
+            [currentCard]="currentCard"
+            (sidebarItemChange)="onSidebarItemChange($event)"
+            (toggleSidebarEvent)="toggleSidebar()">
+          </app-detail-sidebar-layout>
+        </div>
+      </div>
+
+      <!-- Placeholder when no card is selected -->
+      <div class="no-card-selected" *ngIf="!currentCard">
+        <div class="placeholder-content">
+          <i class="pi pi-info-circle"></i>
+          <h3>Aucune offre sélectionnée</h3>
+          <p>Veuillez sélectionner une offre ou opportunité pour voir les détails.</p>
+        </div>
+      </div>
     </div>
   </main>
 </div>

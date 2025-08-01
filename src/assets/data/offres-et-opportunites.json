@@ -94,10 +94,119 @@
               "theme": "Aide à domicile",
               "name": "Installation de caméras de surveillance à domicile",
               "price": "149 €/h",
+              "description": "Installation de caméras de surveillance à domicile propose des services d'aide à domicile de qualité à partir de 149 €/h. Nos professionnels qualifiés vous accompagnent dans votre quotidien avec bienveillance et professionnalisme.",
               "telephone": "+33 6 11 22 33 44",
               "email": "contact@aidestechniques.fr",
               "rating": 5,
               "isFavorite": true
+            }
+          ],
+          "products": [
+            {
+              "id": 2045401,
+              "picture": "assets/slides/service1.jpg",
+              "theme": "Produits",
+              "name": "Produit 1",
+              "telephone": "+33 6 00 11 22 33",
+              "email": "info@coop-agricole.fr",
+              "rating": 4,
+              "isFavorite": true,
+              "description": "",
+              "price": "199.99 €"
+            },
+            {
+              "id": 2075702,
+              "picture": "assets/slides/service2.jpg",
+              "theme": "Produits",
+              "name": "Produit 2",
+              "telephone": "+33 6 44 33 22 11",
+              "email": "contact@aide-domicile.fr",
+              "rating": 5,
+              "isFavorite": false,
+              "description": "",
+              "price": "145.99 €"
+            },
+            {
+              "id": 20465403,
+              "picture": "assets/slides/service3.jpg",
+              "theme": "Produits",
+              "name": "Produit 3",
+              "telephone": "+33 6 55 66 77 88",
+              "email": "info@boulangerie-locale.fr",
+              "rating": 5,
+              "isFavorite": true,
+              "description": "",
+              "price": "179.99 €"
+            }
+          ],
+          "opportunities": [
+            {
+              "id": 26446001,
+              "picture": "",
+              "theme": "Opportunities",
+              "name": "Opportunitié 1",
+              "telephone": "+33 6 00 11 22 33",
+              "email": "info@coop-agricole.fr",
+              "rating": 4,
+              "isFavorite": true,
+              "description": ""
+            },
+            {
+              "id": 204545402,
+              "picture": "",
+              "theme": "Opportunities",
+              "name": "Opportunitié 2",
+              "telephone": "+33 6 44 33 22 11",
+              "email": "contact@aide-domicile.fr",
+              "rating": 5,
+              "isFavorite": false,
+              "description": ""
+            },
+            {
+              "id": 5454545,
+              "picture": "",
+              "theme": "Opportunities",
+              "name": "Opportunitié 3",
+              "telephone": "+33 6 55 66 77 88",
+              "email": "info@boulangerie-locale.fr",
+              "rating": 5,
+              "isFavorite": true,
+              "description": ""
+            }
+          ],
+          "Partenariats": [
+            {
+              "id": 20545401,
+              "picture": "",
+              "theme": "Partenariats",
+              "name": "Partenariat 1",
+              "telephone": "+33 6 00 11 22 33",
+              "email": "info@coop-agricole.fr",
+              "rating": 4,
+              "isFavorite": true,
+              "description": ""
+            },
+            {
+              "id": 544545,
+              "picture": "",
+              "theme": "Partenariats",
+              "name": "Partenariat 2",
+              "telephone": "+33 6 44 33 22 11",
+              "email": "contact@aide-domicile.fr",
+              "rating": 5,
+              "isFavorite": false,
+              "description": ""
+            },
+            {
+              "id": 2005443,
+              "picture": "",
+              "theme": "Partenariats",
+              "name": "Partenariat 3",
+              "telephone": "+33 6 55 66 77 88",
+              "email": "info@boulangerie-locale.fr",
+              "rating": 5,
+              "isFavorite": true,
+              "description": ""
             }
           ]
         }
