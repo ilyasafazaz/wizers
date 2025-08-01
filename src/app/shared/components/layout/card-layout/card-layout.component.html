@@ -34,6 +34,12 @@
           <span>{{ card.email }}</span>
         </div>
       </div>
+
+      <!-- Price section for Offres et Opportunités espace -->
+      <div class="card-price" *ngIf="shouldShowPrice() && card.price">
+        <i class="pi pi-dollar"></i>
+        <span class="price-text">{{ card.price }}</span>
+      </div>
     </div>
   </div>
 </div>

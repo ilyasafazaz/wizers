@@ -1,12 +1,23 @@
 import { Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
-import { Card } from '../detail-annauaire-pro.component';
 
+export interface Card {
+  id: number;
+  picture: string;
+  slides?: string[]; // Added optional slides property
+  theme: string;
+  name: string;
+  telephone: string;
+  email: string;
+  rating: number; // 1-5 stars
+  isFavorite: boolean;
+  description: string;
+}
 @Component({
-  selector: 'app-detail-header-annauaire-pro',
-  templateUrl: './detail-header-annauaire-pro.component.html',
-  styleUrls: ['./detail-header-annauaire-pro.component.scss']
+  selector: 'app-detail-header-layout',
+  templateUrl: './detail-header-layout.component.html',
+  styleUrls: ['./detail-header-layout.component.scss']
 })
-export class DetailHeaderAnnauaireProComponent implements OnInit, OnDestroy, OnChanges {
+export class DetailHeaderLayoutComponent implements OnInit, OnDestroy, OnChanges {
   @Input() currentCard: Card | null = null;
 
   currentSlideIndex: number = 0;

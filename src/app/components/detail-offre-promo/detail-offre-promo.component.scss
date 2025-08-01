@@ -1,49 +1,712 @@
+// Variables
+$primary-blue: #4682B4;
+$steel-blue: #7393B3;
+$navy-blue: #000080;
+$cyan: #00FFFF;
+$orange: #FFAA33;
+$green: #28a745;
+$light-gray: #f9f9f9;
+$border-gray: #ccc;
+$text-gray: #666;
+$text-dark-gray: #555;
+$white: #fff;
+$shadow-light: rgba(0, 0, 0, 0.1);
+$shadow-medium: rgba(0, 0, 0, 0.2);
+$shadow-dark: rgba(0, 0, 0, 0.3);
+
+// Mixins
+@mixin card-style($padding: 1.05rem) {
+  background: $white;
+  padding: $padding;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px $shadow-light;
+  border-left: 3px solid $steel-blue;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-hover-effect {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin grid-responsive($min-width: 210px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 1.05rem;
+}
+
+// Base styles
 .detail-container {
   h2 {
-    font-size: 2rem;
-    color: #40826D;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: $primary-blue;
+    margin-bottom: 0.7rem;
   }
 
   .content-item {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    border: 1px solid $border-gray;
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
+    border-radius: 6px;
+    background-color: $light-gray;
   }
 }
 
 .header-container {
-  background-color: #5F8575;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $navy-blue;
+  color: $cyan;
+  box-shadow: 0 2px 4px $shadow-light;
 }
 
 .main-content {
-  background: url('/assets/background1.webp') no-repeat center center/cover;
-  min-height: calc(100vh - 200px);
-  padding: 0rem;
+  background: url('/assets/background7.jpg') no-repeat center center/cover;
+  min-height: calc(100vh - 140px);
+  padding: 0;
 
   .detail-content {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 140px);
+    padding: 0;
+    box-shadow: 0 3px 6px $shadow-light;
+    overflow: hidden;
 
+    .content {
+      padding: 1.4rem;
+      min-height: 280px;
 
+      .content-wrapper {
+        display: flex;
+        height: 100%;
+        gap: 0;
+        position: relative;
 
+        .main-content-area {
+          flex: 1;
+          padding-right: 1rem;
+          position: relative;
+        }
+      }
+    }
 
-  }
-}
+    .no-card-selected {
+      @include flex-center;
+      min-height: 350px;
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .main-content {
-    padding: 1rem;
+      .placeholder-content {
+        text-align: center;
 
-    .detail-content {
-      padding: 1rem;
+        i {
+          font-size: 2.8rem;
+          color: $steel-blue;
+          margin-bottom: 0.7rem;
+        }
+
+        h3 {
+          color: $primary-blue;
+          margin-bottom: 0.35rem;
+          font-size: 1.05rem;
+        }
+
+        p {
+          color: $text-gray;
+          font-size: 0.77rem;
+          margin: 0;
+        }
+      }
     }
   }
 }
+
+// Content sections
+.content-section {
+  animation: fadeIn 0.3s ease-in-out;
+
+  h3 {
+    font-size: 1.05rem;
+    color: $primary-blue;
+    margin-bottom: 1.05rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid $steel-blue;
+  }
+
+  // Description section
+  .description p {
+    font-size: 0.77rem;
+    line-height: 1.6;
+    color: $text-dark-gray;
+    margin-bottom: 1.4rem;
+  }
+
+  // Price info - special styling for Offres et Opportunités
+  .price-info {
+    margin-top: 1.4rem;
+
+    .price-card {
+      @include card-style();
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      border-left: 3px solid $green;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+
+      i {
+        font-size: 1.2rem;
+        color: $green;
+      }
+
+      div {
+        h4 {
+          color: $green;
+          margin-bottom: 0.18rem;
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+
+        .price-value {
+          color: $green;
+          margin: 0;
+          font-size: 1.1rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  // Additional info cards
+  .additional-info {
+    @include grid-responsive();
+    margin-top: 1.4rem;
+
+    .info-card {
+      @include card-style();
+
+      h4 {
+        color: $primary-blue;
+        margin-bottom: 0.35rem;
+        font-size: 0.77rem;
+      }
+
+      p {
+        color: $text-gray;
+        margin: 0;
+        font-size: 0.7rem;
+      }
+
+      .rating-display {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: 0.35rem;
+
+        .stars {
+          display: flex;
+
+          .pi-star {
+            font-size: 0.77rem;
+            color: #ddd;
+
+            &.filled {
+              color: $orange;
+            }
+          }
+        }
+
+        span {
+          color: $text-gray;
+          font-weight: 500;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  // Contact details - enhanced with price display
+  .contact-details {
+    @include grid-responsive();
+
+    .contact-card {
+      @include card-style();
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+
+      i {
+        font-size: 1.05rem;
+        color: $steel-blue;
+
+        &.pi-tag {
+          color: $green;
+        }
+      }
+
+      div {
+        h4 {
+          color: $primary-blue;
+          margin-bottom: 0.18rem;
+          font-size: 0.77rem;
+
+          &:has(+ .price-value) {
+            color: $green;
+          }
+        }
+
+        p {
+          color: $text-gray;
+          margin: 0;
+          font-size: 0.7rem;
+
+          &.price-value {
+            color: $green;
+            font-weight: bold;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  // FAQ list - enhanced for Offres et Opportunités
+  .faq-list .faq-item {
+    @include card-style();
+    margin-bottom: 0.7rem;
+
+    h4 {
+      color: $primary-blue;
+      margin-bottom: 0.53rem;
+      font-size: 0.77rem;
+    }
+
+    p {
+      color: $text-gray;
+      margin: 0;
+      line-height: 1.5;
+      font-size: 0.7rem;
+    }
+  }
+
+  // Placeholder sections
+  .forum-placeholder,
+  .reviews-placeholder,
+  .form-placeholder,
+  .welcome-message {
+    text-align: center;
+    padding: 2.1rem 1.4rem;
+    background: $white;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px $shadow-light;
+
+    .forum-message,
+    .reviews-message {
+      i {
+        font-size: 2.1rem;
+        color: $steel-blue;
+        margin-bottom: 0.7rem;
+      }
+
+      p {
+        color: $text-gray;
+        font-size: 0.77rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+    .review-summary {
+      margin-bottom: 1.4rem;
+
+      .average-rating {
+        @include flex-center;
+        gap: 0.35rem;
+        margin-bottom: 0.7rem;
+
+        .rating-number {
+          font-size: 1.4rem;
+          font-weight: bold;
+          color: $primary-blue;
+        }
+
+        .stars {
+          display: flex;
+
+          .pi-star {
+            font-size: 1.05rem;
+            color: #ddd;
+
+            &.filled {
+              color: $orange;
+            }
+          }
+        }
+
+        span {
+          color: $text-gray;
+          font-size: 0.77rem;
+        }
+      }
+    }
+  }
+
+  // Form and welcome message specific styles
+  .form-placeholder,
+  .welcome-message {
+    border: 2px dashed #e0e0e0;
+    padding: 3rem 2rem;
+
+    i {
+      font-size: 3rem;
+      color: $steel-blue;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    p {
+      color: $text-gray;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 400px;
+    }
+  }
+
+  .welcome-message {
+    border-color: $primary-blue;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+    i {
+      color: $primary-blue;
+    }
+  }
+
+  // Map container - enhanced with price display
+  .map-container .map-placeholder {
+    @include card-style(2rem);
+    text-align: center;
+
+    i {
+      font-size: 3rem;
+      color: $primary-blue;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      color: $primary-blue;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: $text-gray;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .location-info {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+
+      p {
+        margin: 0.5rem 0;
+        font-size: 0.8rem;
+        text-align: left;
+
+        strong {
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+
+  // Share container
+  .share-container .share-options {
+    @include card-style(2rem);
+
+    h4 {
+      color: $primary-blue;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .social-buttons {
+      @include grid-responsive(120px);
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+
+      .social-btn {
+        @include flex-center;
+        @include button-hover-effect;
+        gap: 0.5rem;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+
+        &.facebook {
+          background-color: #3b5998;
+          color: $white;
+
+          &:hover {
+            background-color: #2d4373;
+          }
+        }
+
+        &.twitter {
+          background-color: #1da1f2;
+          color: $white;
+
+          &:hover {
+            background-color: #0d8bd9;
+          }
+        }
+
+        &.linkedin {
+          background-color: #0077b5;
+          color: $white;
+
+          &:hover {
+            background-color: #005e93;
+          }
+        }
+
+        &.whatsapp {
+          background-color: #25d366;
+          color: $white;
+
+          &:hover {
+            background-color: #1da851;
+          }
+        }
+
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .share-link {
+      h4 {
+        margin-bottom: 0.8rem;
+      }
+
+      .link-container {
+        display: flex;
+        gap: 0.5rem;
+
+        .share-input {
+          flex: 1;
+          padding: 0.8rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background-color: #f8f9fa;
+          font-size: 0.8rem;
+          color: $text-gray;
+        }
+
+        .copy-btn {
+          @include flex-center;
+          gap: 0.4rem;
+          padding: 0.8rem 1.2rem;
+          background-color: $primary-blue;
+          color: $white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          font-size: 0.8rem;
+
+          &:hover {
+            background-color: #5a8fc4;
+          }
+
+          i {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive breakpoints
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0;
+
+    .detail-content {
+      border-radius: 0;
+
+      .content {
+        padding: 1.05rem;
+
+        .content-wrapper .main-content-area {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    .share-container .share-options {
+      padding: 1.5rem;
+
+      .social-buttons {
+        @include grid-responsive(100px);
+        gap: 0.6rem;
+
+        .social-btn {
+          padding: 0.6rem;
+          font-size: 0.75rem;
+
+          i {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .share-link .link-container {
+        flex-direction: column;
+
+        .copy-btn {
+          align-self: stretch;
+          justify-content: center;
+        }
+      }
+    }
+
+    .form-placeholder,
+    .welcome-message {
+      padding: 2rem 1.5rem;
+
+      i {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .price-info .price-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content .detail-content .content {
+    padding: 0.7rem;
+  }
+
+  .content-section {
+    .share-container .share-options {
+      padding: 1rem;
+
+      .social-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+
+        .social-btn {
+          padding: 0.5rem;
+          font-size: 0.7rem;
+
+          span {
+            display: none;
+          }
+
+          i {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    .map-container .map-placeholder {
+      padding: 1.5rem;
+
+      i {
+        font-size: 2.5rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .form-placeholder,
+    .welcome-message {
+      padding: 1.5rem 1rem;
+
+      i {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .price-info .price-card {
+      padding: 0.8rem;
+
+      div .price-value {
+        font-size: 1rem;
+      }
+    }
+
+    .contact-details .contact-card {
+      padding: 0.8rem;
+
+      i {
+        font-size: 1rem;
+      }
+
+      div {
+        h4 {
+          font-size: 0.7rem;
+        }
+
+        p {
+          font-size: 0.65rem;
+
+          &.price-value {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
